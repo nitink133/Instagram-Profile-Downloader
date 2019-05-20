@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#D81758</color>
+    <color name="colorPrimaryDark">#DE4C42</color>
+    <color name="colorAccent">#BE008C</color>
+
+
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="insta_background">#D81758</color>
+</resources>

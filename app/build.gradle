@@ -1,0 +1,103 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "in.blackpaper.instasp"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+
+    implementation 'androidx.cardview:cardview:1.0.0'
+    //Androidx preference
+    implementation 'androidx.preference:preference:1.0.0'
+
+    implementation 'com.google.android.material:material:1.1.0-alpha01'
+
+    implementation "de.hdodenhof:circleimageview:$circleimageview_version"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+
+    // Facebook stetho for debugging
+    implementation "com.facebook.stetho:stetho:$stetho_version"
+    //Lottie for animation
+    implementation "com.airbnb.android:lottie:$lottie_version"
+    //Rxjava and Rxandroid
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+
+    //ACRA crash reporting
+    implementation "ch.acra:acra:$acra_version"
+
+    //Room for Database
+    implementation 'androidx.room:room-runtime:2.1.0-alpha02'
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    // use kapt for Kotlin
+
+    // optional - RxJava support for Room
+    implementation 'androidx.room:room-rxjava2:2.1.0-alpha02'
+
+    //Butterknife for Databinding
+    implementation "com.jakewharton:butterknife:$butterknife_version"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
+
+
+    implementation 'com.google.android.material:material:1.1.0-aplha01'
+    //android recycler-view and cardview support library
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-jackson:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.13.1'
+
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'com.github.GrenderG:Toasty:1.4.2'
+
+
+    implementation "com.facebook.shimmer:shimmer:$shimmer_version"
+
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:2.1.0'
+    implementation 'com.facebook.android:facebook-login:[4,5)'
+
+    //fancy dialog boxes
+    implementation 'com.github.Shashank02051997:FancyGifDialog-Android:1.2'
+    implementation 'com.github.Shashank02051997:FancyAlertDialog-Android:0.1'
+
+
+    implementation 'cz.msebera.android:httpclient:4.4.1.2'
+    implementation 'com.github.simbiose:Encryption:2.0.1'
+    implementation 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.github.ybq:Android-SpinKit:1.1.0'
+    implementation 'com.linsea:universalvideoview:1.1.0@aar'
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+}
