@@ -11,22 +11,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
 
             android:theme="@style/Theme.Design.NoActionBar">
 
+
+        </activity>
+        <activity
+            android:name=".activity.introscreen.IntroScreenActivity"
+
+            android:theme="@style/Theme.Design.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/Theme.Design.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.introscreen.IntroScreenActivity">
-
-        </activity>
-        <activity android:name=".activity.MainActivity"
-            android:theme="@style/Theme.Design.NoActionBar"/>
         <activity android:name=".helper.report.ErrorActivity" />
     </application>
 

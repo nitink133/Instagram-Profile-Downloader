@@ -97,7 +97,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.3.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
     implementation 'com.google.code.gson:gson:2.8.1'
-    implementation 'com.github.ybq:Android-SpinKit:1.1.0'
     implementation 'com.linsea:universalvideoview:1.1.0@aar'
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
 }

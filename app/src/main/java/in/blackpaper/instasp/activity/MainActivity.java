@@ -24,12 +24,21 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import in.blackpaper.instasp.GlobalConstant;
 import in.blackpaper.instasp.R;
+import in.blackpaper.instasp.adapter.DrawerAdapter;
 import in.blackpaper.instasp.base.BaseActivity;
+import in.blackpaper.instasp.data.localpojo.DrawerMenuPojo;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -41,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     boolean isAddAccountViewVisible;
     private TextView mUsername, mEmail;
     private CircleImageView mProfileImage;
+    private RecyclerView drawerMenuRecyclerView;
     private Context context;
+    private DrawerAdapter drawerAdapter;
     NavigationView navigationView;
 
 
@@ -79,19 +90,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mUsername = navigationView.getHeaderView(0).findViewById(R.id.userName);
         mEmail = navigationView.getHeaderView(0).findViewById(R.id.userEmail);
         changeDrawerImageVIew = navigationView.getHeaderView(0).findViewById(R.id.changeDrawerImageVIew);
+        drawerMenuRecyclerView = findViewById(R.id.drawerMenuRecyclerView);
 
-        Menu menu = navigationView.getMenu();
-        SubMenu topChannelMenu = menu.addSubMenu("Instagram");
-        topChannelMenu.add("Feed");
-        topChannelMenu.add("Stories");
-        topChannelMenu.add("Profile Picture");
-        topChannelMenu.add("Favourites");
-        SubMenu appMenu = menu.addSubMenu("Application Related");
-        appMenu.add("How to User");
-        appMenu.add("Share App");
-        appMenu.add("More Apps");
-        appMenu.add("Rate us");
-        appMenu.add("Settings");
+        drawerAdapter = new DrawerAdapter(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        drawerMenuRecyclerView.setLayoutManager(mLayoutManager);
+        drawerMenuRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        drawerMenuRecyclerView.setAdapter(drawerAdapter);
+
+
+        addItemsInDrawer();
+        drawerAdapter.setEventListener(new DrawerAdapter.EventListener() {
+            @Override
+            public void onItemClick(DrawerMenuPojo item) {
+
+            }
+        });
 
     }
 
@@ -101,30 +115,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         changeDrawerImageVIew.setOnClickListener(v -> {
 
-            Menu menu = navigationView.getMenu();
-            menu.clear();
             if (isAddAccountViewVisible) {
                 Glide.with(this).load(R.drawable.ic_arrow_drop).into(changeDrawerImageVIew);
                 isAddAccountViewVisible = false;
-
-
-                SubMenu topChannelMenu = menu.addSubMenu("Instagram");
-                topChannelMenu.add("Feed");
-                topChannelMenu.add("Stories");
-                topChannelMenu.add("Profile Picture");
-                topChannelMenu.add("Favourites");
-                SubMenu appMenu = menu.addSubMenu("Application Related");
-                appMenu.add("How to User");
-                appMenu.add("Share App");
-                appMenu.add("More Apps");
-                appMenu.add("Rate us");
-                appMenu.add("Settings");
+                addItemsInDrawer();
             } else {
                 Glide.with(this).load(R.drawable.ic_arrow_up).into(changeDrawerImageVIew);
                 isAddAccountViewVisible = true;
-                SubMenu topChannelMenu = menu.addSubMenu("Add Account");
-                topChannelMenu.add("n.i.t.i.n_k.h.a.n.na");
-                topChannelMenu.setIcon(R.drawable.ic_share);
+                addItemsInDrawer();
+
             }
 
         });
@@ -196,6 +195,46 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
+    public void addItemsInDrawer() {
+        List<DrawerMenuPojo> drawerMenuPojoList = new ArrayList<>();
+        if (isAddAccountViewVisible) {
+            DrawerMenuPojo drawerMenuPojo = new DrawerMenuPojo();
+            drawerMenuPojo.setMenuName("Feed");
+            drawerMenuPojoList.add(drawerMenuPojo);
+
+            drawerMenuPojo = new DrawerMenuPojo();
+            drawerMenuPojo.setMenuName("Stories");
+            drawerMenuPojoList.add(drawerMenuPojo);
+            drawerMenuPojo = new DrawerMenuPojo();
+            drawerMenuPojo.setMenuName("Profile Picture");
+            drawerMenuPojoList.add(drawerMenuPojo);
+            drawerMenuPojo = new DrawerMenuPojo();
+            drawerMenuPojo.setMenuName("Favourites");
+            drawerMenuPojoList.add(drawerMenuPojo);
+            drawerMenuPojo = new DrawerMenuPojo();
+            drawerMenuPojo.setMenuName("How to User");
+            drawerMenuPojoList.add(drawerMenuPojo);
+            drawerMenuPojo = new DrawerMenuPojo();
+            drawerMenuPojo.setMenuName("Share App");
+            drawerMenuPojoList.add(drawerMenuPojo);
+            drawerMenuPojo = new DrawerMenuPojo();
+            drawerMenuPojo.setMenuName("More Apps");
+            drawerMenuPojoList.add(drawerMenuPojo);
+            drawerMenuPojo = new DrawerMenuPojo();
+            drawerMenuPojo.setMenuName("Rate us");
+            drawerMenuPojoList.add(drawerMenuPojo);
+            drawerMenuPojo = new DrawerMenuPojo();
+            drawerMenuPojo.setMenuName("Settings");
+            drawerMenuPojoList.add(drawerMenuPojo);
+            drawerAdapter.setMenu(drawerMenuPojoList);
+        } else {
+            DrawerMenuPojo drawerMenuPojo = new DrawerMenuPojo();
+            drawerMenuPojo.setMenuName("Add Account");
+            drawerMenuPojoList.add(drawerMenuPojo);
+            drawerAdapter.setMenu(drawerMenuPojoList);
+        }
+    }
 
 }
 
