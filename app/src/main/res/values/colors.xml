@@ -7,5 +7,10 @@
 
     <color name="white">#FFF</color>
     <color name="black">#000</color>
+
+    <color name="grey">#F9F9F9</color>
+
+    <color name="black_transparent">#97000000</color>
+    <color name="white_transparent">#85F8F6F6</color>
     <color name="insta_background">#D81758</color>
 </resources>
