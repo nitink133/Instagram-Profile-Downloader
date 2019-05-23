@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ import in.blackpaper.instasp.GlobalConstant;
 import in.blackpaper.instasp.R;
 import in.blackpaper.instasp.adapter.DrawerAdapter;
 import in.blackpaper.instasp.data.localpojo.DrawerMenuPojo;
+import in.blackpaper.instasp.data.prefs.PreferencesManager;
 import in.blackpaper.instasp.fragments.FavouriteFragment;
 import in.blackpaper.instasp.fragments.FeedFragment;
 import in.blackpaper.instasp.fragments.StoriesFragment;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerAdapter drawerAdapter;
     NavigationView navigationView;
     private FrameLayout frame_container;
+    String username, profileImage;
 
 
     @Override
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView)findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         mProfileImage = navigationView.getHeaderView(0).findViewById(R.id.imageView);
         mUsername = navigationView.getHeaderView(0).findViewById(R.id.userName);
         mEmail = navigationView.getHeaderView(0).findViewById(R.id.userEmail);
@@ -105,6 +108,18 @@ public class MainActivity extends AppCompatActivity {
         drawerMenuRecyclerView.setLayoutManager(mLayoutManager);
         drawerMenuRecyclerView.setItemAnimator(new DefaultItemAnimator());
         drawerMenuRecyclerView.setAdapter(drawerAdapter);
+        try {
+            profileImage = PreferencesManager.getPref(GlobalConstant.PROFILE_PIC);
+            username = PreferencesManager.getPref(GlobalConstant.USERNAME);
+        } catch (NullPointerException e) {
+            profileImage = "";
+            username = "";
+        }
+
+        if (!TextUtils.isEmpty(profileImage))
+            Glide.with(this).load(profileImage).into(mProfileImage);
+        else if (!TextUtils.isEmpty(username))
+            mUsername.setText(username);
 
 
         addItemsInDrawer();
