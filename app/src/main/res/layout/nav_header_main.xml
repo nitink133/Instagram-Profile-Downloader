@@ -13,7 +13,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
+        android:id="@+id/mProfileImage"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:contentDescription="@string/nav_header_desc"
@@ -37,12 +37,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:textSize="18sp"
                 android:text="@string/nav_header_title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <in.blackpaper.instasp.view.RegularTextView
 
                 android:id="@+id/userEmail"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nav_header_subtitle" />

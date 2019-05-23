@@ -17,20 +17,23 @@
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity android:name=".activity.StoriesDownloadActivity" />
         <activity
-            android:name=".activity.SplashActivity"
-            android:theme="@style/Theme.Design.NoActionBar" />
-        <activity
-            android:name=".activity.introscreen.IntroScreenActivity"
+            android:name=".activity.splash.SplashActivity"
             android:theme="@style/Theme.Design.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
 
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.introscreen.IntroScreenActivity"
+            android:theme="@style/Theme.Design.NoActionBar" >
+
+        </activity>
+        <activity
+            android:name=".activity.dashboard.MainActivity"
             android:theme="@style/Theme.Design.NoActionBar">
 
         </activity>

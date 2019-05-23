@@ -16,7 +16,8 @@ public class ApiClient {
     private static Retrofit retrofit = null;
 
 
-    public static Retrofit getClient() {
+    public static Retrofit getClient(String url) {
+        if(url.isEmpty())url = GlobalConstant.BASE_URL;
         if (retrofit == null) {
 
             OkHttpClient clientMe = new OkHttpClient.Builder()
@@ -27,7 +28,7 @@ public class ApiClient {
 
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl(GlobalConstant.REDIRECT_URI)
+                    .baseUrl(url)
                     .client(clientMe)
                     .addConverterFactory(JacksonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

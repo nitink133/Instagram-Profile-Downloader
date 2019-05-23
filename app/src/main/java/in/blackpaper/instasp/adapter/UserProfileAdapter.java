@@ -8,16 +8,19 @@ import android.view.ViewGroup;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import in.blackpaper.instasp.R;
 import in.blackpaper.instasp.data.localpojo.DrawerMenuPojo;
+import in.blackpaper.instasp.data.retrofit.response.IntagramProfileResponse;
 
 public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.ItemViewHolder> {
 
     private Context context;
-    private List<DrawerMenuPojo> items;
+    private List<IntagramProfileResponse.Edge> items;
 
 
     public UserProfileAdapter(Context context) {
@@ -27,7 +30,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
 
     }
 
-    public void setMenu(List<DrawerMenuPojo> itemsList) {
+    public void setEdges(List<IntagramProfileResponse.Edge> itemsList) {
         items.clear();
         items.addAll(itemsList);
         notifyDataSetChanged();
@@ -44,7 +47,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
         this.eventListener = eventListener;
     }
 
-    public DrawerMenuPojo getItemData(int position) {
+    public IntagramProfileResponse.Edge getItemData(int position) {
         return items.get(position);
     }
 
@@ -60,6 +63,12 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
 
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, final int position) {
+        IntagramProfileResponse.Edge edge = items.get(position);
+        if (edge.getNode() != null) {
+            Glide.with(context).load(edge.getNode().getDisplayUrl()).into(holder.image);
+
+
+        }
 
 
     }

@@ -43,7 +43,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import in.blackpaper.instasp.BuildConfig;
 import in.blackpaper.instasp.R;
-import in.blackpaper.instasp.activity.MainActivity;
+import in.blackpaper.instasp.activity.dashboard.MainActivity;
 import in.blackpaper.instasp.utils.Utility;
 
 

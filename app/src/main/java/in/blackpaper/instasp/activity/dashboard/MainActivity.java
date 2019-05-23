@@ -1,4 +1,4 @@
-package in.blackpaper.instasp.activity;
+package in.blackpaper.instasp.activity.dashboard;
 
 import android.annotation.TargetApi;
 import android.app.AlarmManager;
@@ -11,17 +11,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,22 +40,29 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import in.blackpaper.instasp.GlobalConstant;
 import in.blackpaper.instasp.R;
+import in.blackpaper.instasp.activity.ProfilepPictureActivity;
 import in.blackpaper.instasp.adapter.DrawerAdapter;
+import in.blackpaper.instasp.base.BaseActivity;
+import in.blackpaper.instasp.contractor.MainActivityContractor;
 import in.blackpaper.instasp.data.localpojo.DrawerMenuPojo;
 import in.blackpaper.instasp.data.prefs.PreferencesManager;
+import in.blackpaper.instasp.data.room.tables.Logins;
 import in.blackpaper.instasp.fragments.FavouriteFragment;
 import in.blackpaper.instasp.fragments.FeedFragment;
+import in.blackpaper.instasp.fragments.ProfileFragment;
 import in.blackpaper.instasp.fragments.StoriesFragment;
 import in.blackpaper.instasp.utils.ToastUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity<MainActivityPresenter> implements MainActivityContractor.View,
+        FeedFragment.OnFeedFragmentInteractionListener, StoriesFragment.OnStoriesFragmentInteractionListener,
+        FavouriteFragment.OnFragmentInteractionListener, ProfileFragment.OnProfileFragmentInteractionListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
     @BindView(R.id.toolbar)
     public Toolbar toolbar;
     ImageView changeDrawerImageVIew;
-    boolean isAddAccountViewVisible;
+    boolean isAddAccountViewVisible = false;
     private TextView mUsername, mEmail;
     private CircleImageView mProfileImage;
     private RecyclerView drawerMenuRecyclerView;
@@ -61,8 +70,13 @@ public class MainActivity extends AppCompatActivity {
     private DrawerAdapter drawerAdapter;
     NavigationView navigationView;
     private FrameLayout frame_container;
-    String username, profileImage;
+    String username = "", profileImage = "";
 
+
+    @Override
+    public MainActivityPresenter createPresenter() {
+        return new MainActivityPresenter();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +86,12 @@ public class MainActivity extends AppCompatActivity {
         initUI();
         onClick();
 
-        changeFragment(new FeedFragment());
+
+        FeedFragment feedFragment = new FeedFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(GlobalConstant.USERNAME, username);
+        feedFragment.setArguments(bundle);
+        changeFragment(feedFragment);
 
 
     }
@@ -82,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         context = MainActivity.this;
-        initUI();
     }
 
     public void initUI() {
@@ -96,10 +114,12 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        mProfileImage = navigationView.getHeaderView(0).findViewById(R.id.imageView);
-        mUsername = navigationView.getHeaderView(0).findViewById(R.id.userName);
-        mEmail = navigationView.getHeaderView(0).findViewById(R.id.userEmail);
-        changeDrawerImageVIew = navigationView.getHeaderView(0).findViewById(R.id.changeDrawerImageVIew);
+        View headerLayout = navigationView;
+        mProfileImage = headerLayout.findViewById(R.id.mProfileImage);
+        mUsername = headerLayout.findViewById(R.id.userName);
+        mEmail = headerLayout.findViewById(R.id.userEmail);
+        changeDrawerImageVIew = headerLayout.findViewById(R.id.changeDrawerImageVIew);
+
         drawerMenuRecyclerView = findViewById(R.id.drawerMenuRecyclerView);
 
         frame_container = findViewById(R.id.frame_container);
@@ -108,17 +128,13 @@ public class MainActivity extends AppCompatActivity {
         drawerMenuRecyclerView.setLayoutManager(mLayoutManager);
         drawerMenuRecyclerView.setItemAnimator(new DefaultItemAnimator());
         drawerMenuRecyclerView.setAdapter(drawerAdapter);
-        try {
-            profileImage = PreferencesManager.getPref(GlobalConstant.PROFILE_PIC);
-            username = PreferencesManager.getPref(GlobalConstant.USERNAME);
-        } catch (NullPointerException e) {
-            profileImage = "";
-            username = "";
-        }
 
-        if (!TextUtils.isEmpty(profileImage))
+        username = PreferencesManager.getPref(GlobalConstant.USERNAME);
+        profileImage = PreferencesManager.getPref(GlobalConstant.PROFILE_PIC);
+
+        if (profileImage != null && !TextUtils.isEmpty(profileImage))
             Glide.with(this).load(profileImage).into(mProfileImage);
-        else if (!TextUtils.isEmpty(username))
+        if (username != null && !TextUtils.isEmpty(username))
             mUsername.setText(username);
 
 
@@ -132,12 +148,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(DrawerMenuPojo drawerMenuPojo) {
                 if (!isAddAccountViewVisible) {
-                    if (drawerMenuPojo.getMenuName().equals(GlobalConstant.FEED))
-                        changeFragment(new FeedFragment());
-                    else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.STORIES))
+                    if (drawerMenuPojo.getMenuName().equals(GlobalConstant.FEED)) {
+                        FeedFragment feedFragment = new FeedFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString(GlobalConstant.USERNAME, username);
+                        feedFragment.setArguments(bundle);
+                    } else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.STORIES))
                         changeFragment(new StoriesFragment());
-                    else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.PROFILE_PICTURE))
-                        startActivity(new Intent(MainActivity.this, ProfilepPictureActivity.class));
+                    else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.PROFILE_PICTURE)){
+                        ProfileFragment profileFragment = new ProfileFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putString(GlobalConstant.USERNAME,username);
+                        profileFragment.setArguments(bundle);
+                        changeFragment(profileFragment);
+                    }
                     else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.FAVOURITES))
                         changeFragment(new FavouriteFragment());
                     else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.HOW_TO_USER)) {
@@ -148,8 +172,8 @@ public class MainActivity extends AppCompatActivity {
                         ToastUtils.SuccessToast(context, GlobalConstant.MORE_APPS);
                     } else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.RATE_US)) {
                         ToastUtils.SuccessToast(context, GlobalConstant.RATE_US);
-                    } else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.SETTINGS)) {
-                        ToastUtils.SuccessToast(context, GlobalConstant.SETTINGS);
+                    } else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.LOGOUT)) {
+                        ToastUtils.SuccessToast(context, GlobalConstant.LOGOUT);
                     } else {
                         ToastUtils.ErrorToast(context, getString(R.string.some_error));
                     }
@@ -206,30 +230,10 @@ public class MainActivity extends AppCompatActivity {
             drawer.closeDrawer(GravityCompat.START);
         }
     }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-////        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//
-//        switch (item.getItemId()) {
-//
-//            case R.id.action_search:
-//                openSearchActivity();
-//                break;
-//            default:
-//                break;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
 
     public void addItemsInDrawer() {
         List<DrawerMenuPojo> drawerMenuPojoList = new ArrayList<>();
-        if (isAddAccountViewVisible) {
+        if (!isAddAccountViewVisible) {
             DrawerMenuPojo drawerMenuPojo = new DrawerMenuPojo();
             drawerMenuPojo.setMenuName(GlobalConstant.FEED);
             drawerMenuPojoList.add(drawerMenuPojo);
@@ -256,13 +260,28 @@ public class MainActivity extends AppCompatActivity {
             drawerMenuPojo.setMenuName(GlobalConstant.RATE_US);
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName(GlobalConstant.SETTINGS);
+            drawerMenuPojo.setMenuName(GlobalConstant.LOGOUT);
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerAdapter.setMenu(drawerMenuPojoList);
         } else {
             DrawerMenuPojo drawerMenuPojo = new DrawerMenuPojo();
             drawerMenuPojo.setMenuName("Add Account");
             drawerMenuPojoList.add(drawerMenuPojo);
+
+            LiveData<List<Logins>> loggedInUsers = mPresenter.getAllLoggedInUsers();
+            loggedInUsers.observe(this, new Observer<List<Logins>>() {
+                @Override
+                public void onChanged(List<Logins> logins) {
+                    if (logins.size() > 0) {
+                        for (Logins logins1 : logins) {
+                            DrawerMenuPojo drawerMenuPojo1 = new DrawerMenuPojo();
+                            drawerMenuPojo1.setMenuName(logins1.getUserName());
+                            drawerMenuPojoList.add(drawerMenuPojo1);
+
+                        }
+                    }
+                }
+            });
             drawerAdapter.setMenu(drawerMenuPojoList);
         }
     }
@@ -272,11 +291,12 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, targetFragment, "fragment")
+                .replace(R.id.frame_container, targetFragment, "fragment")
                 .addToBackStack(null)
                 .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }
+
 
 }
 

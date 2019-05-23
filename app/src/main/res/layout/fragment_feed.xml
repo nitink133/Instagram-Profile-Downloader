@@ -6,9 +6,21 @@
     android:background="@color/grey"
     tools:context=".fragments.FeedFragment">
 
-   <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/recycler_view"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+    <in.blackpaper.instasp.view.BoldTextView
+        android:id="@+id/noDataText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="No Record Found"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

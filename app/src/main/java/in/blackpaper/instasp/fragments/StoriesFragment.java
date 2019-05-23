@@ -1,7 +1,6 @@
 package in.blackpaper.instasp.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +49,5 @@ public class StoriesFragment extends Fragment {
 
 
     public interface OnStoriesFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 }

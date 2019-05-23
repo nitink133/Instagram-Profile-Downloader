@@ -15,6 +15,7 @@ import org.acra.config.ConfigurationBuilder;
 import org.acra.sender.ReportSenderFactory;
 
 import in.blackpaper.instasp.data.prefs.PreferencesManager;
+import in.blackpaper.instasp.data.repositry.DataObjectRepositry;
 import in.blackpaper.instasp.helper.report.AcraReportSenderFactory;
 import in.blackpaper.instasp.helper.report.ErrorActivity;
 import in.blackpaper.instasp.helper.report.UserAction;
@@ -31,6 +32,7 @@ public class AppController extends MultiDexApplication {
         Stetho.initializeWithDefaults(this);
 
         PreferencesManager.init(this);
+        DataObjectRepositry.init(this);
 
     }
 

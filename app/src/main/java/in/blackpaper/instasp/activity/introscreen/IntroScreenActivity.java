@@ -1,15 +1,10 @@
 package in.blackpaper.instasp.activity.introscreen;
 
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -30,24 +25,19 @@ import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.util.EntityUtils;
-import in.blackpaper.instasp.BuildConfig;
 import in.blackpaper.instasp.GlobalConstant;
 import in.blackpaper.instasp.R;
-import in.blackpaper.instasp.activity.MainActivity;
+import in.blackpaper.instasp.activity.dashboard.MainActivity;
 import in.blackpaper.instasp.adapter.IntroScreenAdapter;
 import in.blackpaper.instasp.base.BaseActivity;
 import in.blackpaper.instasp.contractor.IntroScreenContractor;
 import in.blackpaper.instasp.data.localpojo.IntroScreens;
 import in.blackpaper.instasp.data.prefs.PreferencesManager;
 import in.blackpaper.instasp.data.retrofit.response.InstagramLoginResponse;
+import in.blackpaper.instasp.data.room.tables.Logins;
 import in.blackpaper.instasp.dialog.AuthenticationDialog;
 import in.blackpaper.instasp.listener.AuthenticationListener;
-import in.blackpaper.instasp.utils.InstaUtils;
-import in.blackpaper.instasp.utils.ToastUtils;
 import in.blackpaper.instasp.utils.Utility;
-import in.blackpaper.instasp.utils.ZoomstaUtil;
-import in.blackpaper.instasp.view.RegularButton;
-import in.blackpaper.instasp.view.RegularEditText;
 
 public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> implements IntroScreenContractor.View, AuthenticationListener {
     ViewPager introSlider;
@@ -102,7 +92,7 @@ public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> impl
 
 
                 authenticationDialog = new AuthenticationDialog(this);
-                authenticationDialog.show(getSupportFragmentManager().beginTransaction(),AuthenticationDialog.TAG);
+                authenticationDialog.show(getSupportFragmentManager().beginTransaction(), AuthenticationDialog.TAG);
 //                authenticationDialog.setCancelable(true);
 //                authenticationDialog.show();
             }
@@ -115,6 +105,7 @@ public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> impl
         if (auth_token == null)
             return;
         PreferencesManager.savePref(GlobalConstant.TOKEN, auth_token);
+
         token = auth_token;
         getUserInfoByAccessToken(token);
     }
@@ -150,18 +141,43 @@ public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> impl
                     JSONObject jsonData = jsonObject.getJSONObject("data");
                     if (jsonData.has("id")) {
                         //сохранение данных пользователя
-                        PreferencesManager.savePref(GlobalConstant.USER_ID, jsonData.getString("id"));
+                        Logins logins = new Logins();
+                        logins.setUserId(jsonData.getString("id"));
+                        logins.setUserName(jsonData.getString("username"));
+                        logins.setProfilePic(jsonData.getString("profile_picture"));
+                        logins.setToken(token);
+                        logins.setBio(jsonData.getString("bio"));
+                        logins.setFullName(jsonData.getString("full_name"));
+                        logins.setMedia(jsonData.getJSONObject("counts").getInt("media"));
+                        logins.setFollows(jsonData.getJSONObject("counts").getInt("follows"));
+                        logins.setFollowedBy(jsonData.getJSONObject("counts").getInt("followed_by"));
+                        long id = mPresenter.addNewUser(logins);
+
+
                         PreferencesManager.savePref(GlobalConstant.USERNAME, jsonData.getString("username"));
+                        PreferencesManager.savePref(GlobalConstant.USER_ID, jsonData.getString("id"));
+                        PreferencesManager.savePref(GlobalConstant.TOKEN, token);
                         PreferencesManager.savePref(GlobalConstant.PROFILE_PIC, jsonData.getString("profile_picture"));
 
-                        startActivity(new Intent(IntroScreenActivity.this,MainActivity.class));
+
+                        PreferencesManager.savePref(GlobalConstant.FULL_NAME, jsonData.getString("full_name"));
+                        PreferencesManager.savePref(GlobalConstant.BIO, jsonData.getString("bio"));
+                        PreferencesManager.savePref(GlobalConstant.MEDIA, jsonData.getJSONObject("counts").getInt("media"));
+                        PreferencesManager.savePref(GlobalConstant.FOLLOWS,jsonData.getJSONObject("counts").getInt("follows"));
+                        PreferencesManager.savePref(GlobalConstant.FOLLOWED_BY, jsonData.getJSONObject("counts").getInt("followed_by"));
+
+
+
+                        Intent intent = new Intent(IntroScreenActivity.this, MainActivity.class);
+                        intent.putExtra("login_id", id);
+                        startActivity(intent);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
             } else {
-                Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.some_error),Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.some_error), Toast.LENGTH_LONG);
                 toast.show();
             }
         }
