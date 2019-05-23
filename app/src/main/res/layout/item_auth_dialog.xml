@@ -1,109 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    android:padding="20dp"
-    app:cardCornerRadius="10dp"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/white">
 
-    <LinearLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:src="@drawable/ic_instagram" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/auth_dialog"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
+                android:scrollbars="horizontal">
 
-                <in.blackpaper.instasp.view.BoldTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:text="UserName"
-                    android:textSize="18sp" />
-
-                <in.blackpaper.instasp.view.RegularEditText
-                    android:layout_width="match_parent"
-                    android:id="@+id/username"
-                    android:hint="Enter username"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp" />
+                <WebView
+                    android:id="@+id/webView"
+                    android:layout_width="500dp"
+                    android:layout_height="400dp"></WebView>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
+        </HorizontalScrollView>
 
-                <in.blackpaper.instasp.view.BoldTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:text="Password"
-                    android:textSize="18sp" />
-
-                <in.blackpaper.instasp.view.RegularEditText
-                    android:layout_width="match_parent"
-                    android:hint="Enter Password"
-                    android:singleLine="true"
-                    android:inputType="textPassword"
-                    android:id="@+id/password"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_margin="20dp"
-                android:layout_height="wrap_content">
-
-                <in.blackpaper.instasp.view.RegularButton
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="Go Back"
-                    android:layout_margin="5dp"
-                    android:id="@+id/goBack"
-                    android:background="@color/insta_background"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:layout_marginTop="15dp"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content" />
-                <in.blackpaper.instasp.view.RegularButton
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:text="Login"
-                    android:background="@color/insta_background"
-                    android:id="@+id/loginInstagram"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:layout_marginTop="15dp"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

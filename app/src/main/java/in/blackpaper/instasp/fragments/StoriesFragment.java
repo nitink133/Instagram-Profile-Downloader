@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import in.blackpaper.instasp.R;
 
-public class FeedFragment extends Fragment {
+public class StoriesFragment extends Fragment {
 
-    private OnFeedFragmentInteractionListener mListener;
+    private OnStoriesFragmentInteractionListener mListener;
 
-    public FeedFragment() {
+    public StoriesFragment() {
         // Required empty public constructor
     }
 
@@ -28,17 +28,17 @@ public class FeedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_feed, container, false);
+        return inflater.inflate(R.layout.fragment_stories, container, false);
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFeedFragmentInteractionListener) {
-            mListener = (OnFeedFragmentInteractionListener) context;
+        if (context instanceof OnStoriesFragmentInteractionListener) {
+            mListener = (OnStoriesFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFeedFragmentInteractionListener");
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -48,7 +48,8 @@ public class FeedFragment extends Fragment {
         mListener = null;
     }
 
-    public interface OnFeedFragmentInteractionListener {
+
+    public interface OnStoriesFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
 }

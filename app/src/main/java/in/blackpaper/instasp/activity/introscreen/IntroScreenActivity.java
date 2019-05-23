@@ -1,28 +1,47 @@
 package in.blackpaper.instasp.activity.introscreen;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
-import androidx.viewpager.widget.ViewPager;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import butterknife.ButterKnife;
+import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.methods.HttpGet;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+import cz.msebera.android.httpclient.util.EntityUtils;
 import in.blackpaper.instasp.BuildConfig;
+import in.blackpaper.instasp.GlobalConstant;
 import in.blackpaper.instasp.R;
 import in.blackpaper.instasp.activity.MainActivity;
 import in.blackpaper.instasp.adapter.IntroScreenAdapter;
 import in.blackpaper.instasp.base.BaseActivity;
 import in.blackpaper.instasp.contractor.IntroScreenContractor;
 import in.blackpaper.instasp.data.localpojo.IntroScreens;
+import in.blackpaper.instasp.data.prefs.PreferencesManager;
 import in.blackpaper.instasp.data.retrofit.response.InstagramLoginResponse;
+import in.blackpaper.instasp.dialog.AuthenticationDialog;
+import in.blackpaper.instasp.listener.AuthenticationListener;
 import in.blackpaper.instasp.utils.InstaUtils;
 import in.blackpaper.instasp.utils.ToastUtils;
 import in.blackpaper.instasp.utils.Utility;
@@ -30,11 +49,13 @@ import in.blackpaper.instasp.utils.ZoomstaUtil;
 import in.blackpaper.instasp.view.RegularButton;
 import in.blackpaper.instasp.view.RegularEditText;
 
-public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> implements IntroScreenContractor.View {
+public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> implements IntroScreenContractor.View, AuthenticationListener {
     ViewPager introSlider;
     IntroScreenAdapter introPagerAdapter;
     WormDotsIndicator dotsIndicator;
     LinearLayout instaLogin;
+    AuthenticationDialog authenticationDialog;
+    private String token = null;
     Context mContext;
 
     private static final String TAG = IntroScreenActivity.class.getSimpleName();
@@ -71,117 +92,80 @@ public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> impl
 
     }
 
+
     public void onClick() {
         instaLogin.setOnClickListener(v -> {
-            showInstaLoginDialog();
+//            showInstaLoginDialog();
+            if (token != null) {
+                startActivity(new Intent(this, MainActivity.class));
+            } else {
+
+
+                authenticationDialog = new AuthenticationDialog(this);
+                authenticationDialog.show(getSupportFragmentManager().beginTransaction(),AuthenticationDialog.TAG);
+//                authenticationDialog.setCancelable(true);
+//                authenticationDialog.show();
+            }
         });
 
     }
 
-    private class Sign extends AsyncTask<String, String, String> {
-        String resp;
-        String username,password;
+    @Override
+    public void onCodeReceived(String auth_token) {
+        if (auth_token == null)
+            return;
+        PreferencesManager.savePref(GlobalConstant.TOKEN, auth_token);
+        token = auth_token;
+        getUserInfoByAccessToken(token);
+    }
 
-        private Sign(String username,String password) {
-            this.username = username;
-            this.password = password;
-        }
 
-        protected void onPreExecute() {
-            super.onPreExecute();
-            showLoading();
-        }
+    private void getUserInfoByAccessToken(String token) {
+        new RequestInstagramAPI().execute();
+    }
 
-        protected String doInBackground(String... args) {
+    private class RequestInstagramAPI extends AsyncTask<Void, String, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpGet httpGet = new HttpGet(getResources().getString(R.string.get_user_info_url) + token);
             try {
-                this.resp = InstaUtils.login(username,password);
-            } catch (Exception e) {
-                try {
-                    e.printStackTrace();
-                } catch (Exception e2) {
-                    e2.printStackTrace();
-                }
+                HttpResponse response = httpClient.execute(httpGet);
+                HttpEntity httpEntity = response.getEntity();
+                return EntityUtils.toString(httpEntity);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
             return null;
         }
 
-        protected void onPostExecute(String img) {
-            try {
-                if (this.resp.equals(BuildConfig.VERSION_NAME)) {
-                    hideLoading();
-                    ToastUtils.ErrorToast(mContext, "User not found");
+        @Override
+        protected void onPostExecute(String response) {
+            super.onPostExecute(response);
+            if (response != null) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    Log.e("response", jsonObject.toString());
+                    JSONObject jsonData = jsonObject.getJSONObject("data");
+                    if (jsonData.has("id")) {
+                        //сохранение данных пользователя
+                        PreferencesManager.savePref(GlobalConstant.USER_ID, jsonData.getString("id"));
+                        PreferencesManager.savePref(GlobalConstant.USERNAME, jsonData.getString("username"));
+                        PreferencesManager.savePref(GlobalConstant.PROFILE_PIC, jsonData.getString("profile_picture"));
+
+                        startActivity(new Intent(IntroScreenActivity.this,MainActivity.class));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                if (this.resp.equals("true")) {
-                    ZoomstaUtil.setStringPreference(mContext, InstaUtils.getCookies(), "cooki");
-                    ZoomstaUtil.setStringPreference(mContext, InstaUtils.getCsrf(), "csrf");
-                    ZoomstaUtil.setStringPreference(mContext, InstaUtils.getUserId(), "userid");
-                    ZoomstaUtil.setStringPreference(mContext, InstaUtils.getSessionid(), "sessionid");
-                    ZoomstaUtil.setStringPreference(mContext,username , "username");
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Intent i = new Intent(IntroScreenActivity.this, MainActivity.class);
-                            i.putExtra("user", InstaUtils.getUserId());
-
-                            hideLoading();
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            IntroScreenActivity.this.finish();
-                            IntroScreenActivity.this.startActivity(i);
-                            IntroScreenActivity.this.overridePendingTransition(R.anim.enter_main, R.anim.exit_splash);
-                        }
-                    }, 1500);
-                } else if (this.resp.equals("false")) {
-                    hideLoading();
-                    ToastUtils.ErrorToast(IntroScreenActivity.this, "Incorrect Username / Password");
-                } else {
-
-                    hideLoading();
-                    ToastUtils.ErrorToast(IntroScreenActivity.this, "Problem occurred logging in. Please try again");
-                }
-            } catch (Exception e) {
-
-                hideLoading();
-                ToastUtils.ErrorToast(IntroScreenActivity.this, "Problem occurred logging in. Please try again");
+            } else {
+                Toast toast = Toast.makeText(getApplicationContext(),getString(R.string.some_error),Toast.LENGTH_LONG);
+                toast.show();
             }
         }
     }
-
-    public void showInstaLoginDialog() {
-        LayoutInflater layoutInflaterAndroid = LayoutInflater.from(this);
-        View mView = layoutInflaterAndroid.inflate(R.layout.item_auth_dialog, null);
-        android.app.AlertDialog.Builder alertDialogBuilderUserInput = new android.app.AlertDialog.Builder(this);
-        alertDialogBuilderUserInput.setView(mView);
-        final android.app.AlertDialog alertDialogAndroid = alertDialogBuilderUserInput.create();
-        alertDialogAndroid.show();
-        alertDialogAndroid.setCancelable(false);
-
-        final RegularButton goBack, loginInstagram;
-        RegularEditText username, password;
-
-        goBack = alertDialogAndroid.findViewById(R.id.goBack);
-        loginInstagram = alertDialogAndroid.findViewById(R.id.loginInstagram);
-        username = alertDialogAndroid.findViewById(R.id.username);
-        password = alertDialogAndroid.findViewById(R.id.password);
-
-
-        goBack.setOnClickListener(v -> {
-            alertDialogAndroid.dismiss();
-        });
-
-        loginInstagram.setOnClickListener(v -> {
-            if (TextUtils.isEmpty(username.getText().toString()))
-                ToastUtils.ErrorToast(mContext, mContext.getString(R.string.username_cant_empty));
-            else if (TextUtils.isEmpty(password.getText().toString()))
-                ToastUtils.ErrorToast(mContext, mContext.getString(R.string.password_cant_empty));
-            else {
-                new Sign(username.getText().toString(),password.getText().toString()).execute();
-            }
-            alertDialogAndroid.dismiss();
-
-        });
-    }
-
 
     @Override
     public void updateViewForInstagramLogin(InstagramLoginResponse instagramLoginResponse) {

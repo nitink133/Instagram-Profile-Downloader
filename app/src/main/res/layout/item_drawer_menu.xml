@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:padding="5dp"
+    android:id="@+id/rootLayoutVIew"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="30dp"
-        android:src="@drawable/ic_share"
+        android:contentDescription="TODO" android:src="@drawable/ic_share"
         android:layout_height="30dp" />
 
     <in.blackpaper.instasp.view.RegularTextView

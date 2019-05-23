@@ -1,21 +1,18 @@
 package in.blackpaper.instasp.activity;
 
+import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.SubMenu;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,10 +20,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +38,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import in.blackpaper.instasp.GlobalConstant;
 import in.blackpaper.instasp.R;
 import in.blackpaper.instasp.adapter.DrawerAdapter;
-import in.blackpaper.instasp.base.BaseActivity;
 import in.blackpaper.instasp.data.localpojo.DrawerMenuPojo;
+import in.blackpaper.instasp.fragments.FavouriteFragment;
+import in.blackpaper.instasp.fragments.FeedFragment;
+import in.blackpaper.instasp.fragments.StoriesFragment;
+import in.blackpaper.instasp.utils.ToastUtils;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Context context;
     private DrawerAdapter drawerAdapter;
     NavigationView navigationView;
+    private FrameLayout frame_container;
 
 
     @Override
@@ -62,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initUI();
+        onClick();
+
+        changeFragment(new FeedFragment());
 
 
     }
@@ -84,14 +92,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = (NavigationView)findViewById(R.id.nav_view);
         mProfileImage = navigationView.getHeaderView(0).findViewById(R.id.imageView);
         mUsername = navigationView.getHeaderView(0).findViewById(R.id.userName);
         mEmail = navigationView.getHeaderView(0).findViewById(R.id.userEmail);
         changeDrawerImageVIew = navigationView.getHeaderView(0).findViewById(R.id.changeDrawerImageVIew);
         drawerMenuRecyclerView = findViewById(R.id.drawerMenuRecyclerView);
 
+        frame_container = findViewById(R.id.frame_container);
         drawerAdapter = new DrawerAdapter(this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         drawerMenuRecyclerView.setLayoutManager(mLayoutManager);
@@ -100,18 +108,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         addItemsInDrawer();
-        drawerAdapter.setEventListener(new DrawerAdapter.EventListener() {
-            @Override
-            public void onItemClick(DrawerMenuPojo item) {
 
-            }
-        });
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    public void onClick() {
+        drawerAdapter.setEventListener(new DrawerAdapter.EventListener() {
+            @Override
+            public void onItemClick(DrawerMenuPojo drawerMenuPojo) {
+                if (!isAddAccountViewVisible) {
+                    if (drawerMenuPojo.getMenuName().equals(GlobalConstant.FEED))
+                        changeFragment(new FeedFragment());
+                    else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.STORIES))
+                        changeFragment(new StoriesFragment());
+                    else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.PROFILE_PICTURE))
+                        startActivity(new Intent(MainActivity.this, ProfilepPictureActivity.class));
+                    else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.FAVOURITES))
+                        changeFragment(new FavouriteFragment());
+                    else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.HOW_TO_USER)) {
+                        ToastUtils.SuccessToast(context, GlobalConstant.HOW_TO_USER);
+                    } else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.SHARE_APP)) {
+                        ToastUtils.SuccessToast(context, GlobalConstant.SHARE_APP);
+                    } else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.MORE_APPS)) {
+                        ToastUtils.SuccessToast(context, GlobalConstant.MORE_APPS);
+                    } else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.RATE_US)) {
+                        ToastUtils.SuccessToast(context, GlobalConstant.RATE_US);
+                    } else if (drawerMenuPojo.getMenuName().equals(GlobalConstant.SETTINGS)) {
+                        ToastUtils.SuccessToast(context, GlobalConstant.SETTINGS);
+                    } else {
+                        ToastUtils.ErrorToast(context, getString(R.string.some_error));
+                    }
+                }
+
+            }
+        });
 
         changeDrawerImageVIew.setOnClickListener(v -> {
 
@@ -127,6 +157,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         });
+    }
+
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+    @Override
+    protected void onResume() {
+        super.onResume();
+
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (sharedPreferences.getBoolean(GlobalConstant.KEY_THEME_CHANGE, false)) {
@@ -175,57 +212,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //    }
 
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        Fragment fragment;
-//        switch (item.getItemId()) {
-//            case R.id.nav_add:
-//                startActivity(new Intent(this, CreateNotesActivity.class));
-//                break;
-//            case R.id.nav_settings:
-//                startActivity(new Intent(this, SettingsActivity.class));
-//                break;
-//
-//        }
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-
     public void addItemsInDrawer() {
         List<DrawerMenuPojo> drawerMenuPojoList = new ArrayList<>();
         if (isAddAccountViewVisible) {
             DrawerMenuPojo drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName("Feed");
+            drawerMenuPojo.setMenuName(GlobalConstant.FEED);
             drawerMenuPojoList.add(drawerMenuPojo);
 
             drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName("Stories");
+            drawerMenuPojo.setMenuName(GlobalConstant.STORIES);
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName("Profile Picture");
+            drawerMenuPojo.setMenuName(GlobalConstant.PROFILE_PICTURE);
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName("Favourites");
+            drawerMenuPojo.setMenuName(GlobalConstant.FAVOURITES);
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName("How to User");
+            drawerMenuPojo.setMenuName(GlobalConstant.HOW_TO_USER);
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName("Share App");
+            drawerMenuPojo.setMenuName(GlobalConstant.SHARE_APP);
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName("More Apps");
+            drawerMenuPojo.setMenuName(GlobalConstant.MORE_APPS);
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName("Rate us");
+            drawerMenuPojo.setMenuName(GlobalConstant.RATE_US);
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName("Settings");
+            drawerMenuPojo.setMenuName(GlobalConstant.SETTINGS);
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerAdapter.setMenu(drawerMenuPojoList);
         } else {
@@ -234,6 +250,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawerMenuPojoList.add(drawerMenuPojo);
             drawerAdapter.setMenu(drawerMenuPojoList);
         }
+    }
+
+
+    public void changeFragment(Fragment targetFragment) {
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, targetFragment, "fragment")
+                .addToBackStack(null)
+                .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
     }
 
 }

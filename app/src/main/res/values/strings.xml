@@ -3,6 +3,10 @@
     <string name="insta_client_id">7b72511c9c8243158b1cef8f747d88b3</string>
     <string name="insta_client_secret">3424a76b2451494ab44f9e3304f7cb16</string>
 
+    <string name="redirect_url">https://instagram.com/</string>
+    <string name="base_url">https://api.instagram.com/</string>
+    <string name="get_user_info_url">https://api.instagram.com/v1/users/self/?access_token=</string>
+
 
     <string name="username_cant_empty">Username field can\'t be empty.</string>
     <string name="password_cant_empty">Password field can\'t be empty.</string>
@@ -13,7 +17,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
 

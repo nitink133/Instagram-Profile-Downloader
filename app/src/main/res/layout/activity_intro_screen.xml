@@ -62,14 +62,14 @@
                     android:layout_width="wrap_content"
                     android:id="@+id/instaLogin"
                     android:clickable="true"
-                    android:padding="10dp"
+                    android:focusable="true" android:padding="10dp"
                     android:background="@drawable/ic_border"
 
                     android:layout_height="wrap_content">
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_instagram"/>
+                        android:contentDescription="TODO" android:src="@drawable/ic_instagram"/>
 
                     <in.blackpaper.instasp.view.RegularTextView
                         android:layout_width="0dp"

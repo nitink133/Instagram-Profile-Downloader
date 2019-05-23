@@ -4,12 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,13 +17,13 @@ import in.blackpaper.instasp.R;
 import in.blackpaper.instasp.data.localpojo.DrawerMenuPojo;
 import in.blackpaper.instasp.view.RegularTextView;
 
-public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ItemViewHolder> {
+public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ItemViewHolder> {
 
     private Context context;
     private List<DrawerMenuPojo> items;
 
 
-    public DrawerAdapter(Context context) {
+    public FeedAdapter(Context context) {
 
         this.context = context;
         this.items = new ArrayList<>();
@@ -38,11 +37,11 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ItemViewHo
 
     }
 
-    public interface EventListener{
+    public interface EventListener {
         void onItemClick(DrawerMenuPojo item);
     }
 
-    private EventListener eventListener;
+    private FeedAdapter.EventListener eventListener;
 
     public void setEventListener(EventListener eventListener) {
         this.eventListener = eventListener;
@@ -54,25 +53,21 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ItemViewHo
 
 
     @Override
-    public DrawerAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FeedAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemLayoutView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_drawer_menu, parent, false);
+                .inflate(R.layout.item_feed, parent, false);
 
-        return new DrawerAdapter.ItemViewHolder(itemLayoutView);
+        return new FeedAdapter.ItemViewHolder(itemLayoutView);
     }
 
 
     @Override
-    public void onBindViewHolder(final DrawerAdapter.ItemViewHolder holder, final int position) {
+    public void onBindViewHolder(final FeedAdapter.ItemViewHolder holder, final int position) {
 
-        DrawerMenuPojo drawerMenuPojo = items.get(position);
-        holder.text.setText(drawerMenuPojo.getMenuName());
-//        Glide.with(context).load(drawerMenuList.getImage()).into(holder.image);
-        holder.image.setVisibility(View.GONE);
 
-        holder.rootLayoutVIew.setOnClickListener(v->{
-            if(eventListener!=null)
-                eventListener.onItemClick(drawerMenuPojo);
+        holder.rootLayoutVIew.setOnClickListener(v -> {
+//            if (eventListener != null)
+//                eventListener.onItemClick(drawerMenuPojo);
         });
 
 
@@ -85,15 +80,19 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ItemViewHo
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
-        RegularTextView text;
-        ImageView image;
-        LinearLayout rootLayoutVIew;
+        RegularTextView caption;
+        ImageView heart;
+        ImageButton download, repost, share;
+        CardView rootLayoutVIew;
 
 
         public ItemViewHolder(View itemView) {
             super(itemView);
-            text = itemView.findViewById(R.id.text);
-            image = itemView.findViewById(R.id.image);
+            caption = itemView.findViewById(R.id.caption);
+            heart = itemView.findViewById(R.id.heart);
+            repost = itemView.findViewById(R.id.repost);
+            share = itemView.findViewById(R.id.share);
+            download = itemView.findViewById(R.id.download);
             rootLayoutVIew = itemView.findViewById(R.id.rootLayoutVIew);
 
 
@@ -103,5 +102,6 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ItemViewHo
 
 
 }
+
 
 

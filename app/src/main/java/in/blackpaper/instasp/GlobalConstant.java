@@ -10,4 +10,23 @@ public class GlobalConstant {
 
     public static final String BOLD_FONT = "WorkSans_Bold.ttf";
     public static final String REGULAR_FONT = "WorkSans_Regular.ttf";
+
+    //Drawer Menu
+
+    public static final String FEED = "Feed";
+    public static final String STORIES = "Stories";
+    public static final String PROFILE_PICTURE = "Profile Picture";
+    public static final String FAVOURITES = "Favourites";
+    public static final String HOW_TO_USER = "How to Use";
+    public static final String SHARE_APP = "Share App";
+    public static final String MORE_APPS = "More Apps";
+    public static final String RATE_US = "Rate us";
+    public static final String SETTINGS = "Settings";
+
+    //instagram-prefrence
+
+    public static final String USERNAME = "username";
+    public static final String USER_ID = "user_id";
+    public static final String PROFILE_PIC = "profile_pic";
+    public static final String TOKEN = "token";
 }
