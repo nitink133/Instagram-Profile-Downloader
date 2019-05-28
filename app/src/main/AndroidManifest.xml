@@ -3,6 +3,10 @@
     package="in.blackpaper.instasp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:name=".AppController"
@@ -12,31 +16,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.DownloadHistoryActivity"></activity>
-        <activity android:name=".activity.ProfilepPictureActivity"
+        <activity android:name=".activity.HowToUseActivity"></activity>
+        <activity android:name=".activity.DownloadProfileImageActivity" />
+        <activity android:name=".activity.ViewStoryActivity" />
+        <activity android:name=".activity.ViewProfileActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.DownloadHistoryActivity" />
+        <activity
+            android:name=".activity.ProfilepPictureActivity"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity android:name=".activity.StoriesDownloadActivity" />
         <activity
             android:name=".activity.splash.SplashActivity"
-            android:theme="@style/Theme.Design.NoActionBar" >
+            android:theme="@style/Theme.Design.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.introscreen.IntroScreenActivity"
-            android:theme="@style/Theme.Design.NoActionBar" >
-
-        </activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity
             android:name=".activity.dashboard.MainActivity"
-            android:theme="@style/Theme.Design.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity android:name=".helper.report.ErrorActivity" />
     </application>
 

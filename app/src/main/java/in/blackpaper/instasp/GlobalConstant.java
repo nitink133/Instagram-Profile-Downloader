@@ -2,7 +2,7 @@ package in.blackpaper.instasp;
 
 public class GlobalConstant {
     public static final String BASE_URL_API = "https://api.instagram.com/";
-    public static final String CLIENT_ID = "7b72511c9c8243158b1cef8f747d88b3";
+    public static final String CLIENT_ID = "35a16c292a454dc598c24fe3c7e1be60";
     public static final String CLIENT_SECRET = "3424a76b2451494ab44f9e3304f7cb16";
     public static final String BASE_URL = "https://instagram.com/";
 
@@ -10,18 +10,26 @@ public class GlobalConstant {
 
     public static final String BOLD_FONT = "WorkSans_Bold.ttf";
     public static final String REGULAR_FONT = "WorkSans_Regular.ttf";
+    public static final String LOBSTER_BOLD_FONT = "LobsterTwoBold.ttf";
+
+
+    public static final String storeLink = "https://play.google.com/store/apps/details?id=";
 
     //Drawer Menu
 
     public static final String FEED = "Feed";
     public static final String STORIES = "Stories";
-    public static final String PROFILE_PICTURE = "Profile Picture";
+    public static final String PROFILE_PICTURE = "Download Profile Pic";
     public static final String FAVOURITES = "Favourites";
     public static final String HOW_TO_USER = "How to Use";
     public static final String SHARE_APP = "Share App";
     public static final String MORE_APPS = "More Apps";
     public static final String RATE_US = "Rate us";
     public static final String LOGOUT = "Logout";
+
+    //Saved-files name
+
+    public static final String SAVED_FILE_NAME = "INSTASP";
 
     //instagram-prefrence
 

@@ -23,25 +23,22 @@ public class Logins {
     @NonNull
     @ColumnInfo(name = "user_name")
     private String userName;
-    @NonNull
     @ColumnInfo(name = "profile_pic")
     private String profilePic;
 
-    @NonNull
     public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(@NonNull String fullName) {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    @NonNull
     public String getBio() {
         return bio;
     }
 
-    public void setBio(@NonNull String bio) {
+    public void setBio(String bio) {
         this.bio = bio;
     }
 
@@ -69,23 +66,57 @@ public class Logins {
         this.follows = follows;
     }
 
-    @NonNull
     @ColumnInfo(name = "full_name")
     private String fullName;
 
-    @NonNull
+
     @ColumnInfo(name = "bio")
     private String bio;
 
-    @NonNull
+
     @ColumnInfo(name = "media")
     private int media;
 
-    @NonNull
+    @ColumnInfo(name = "cookies")
+    private String cookies;
+
+
+    @ColumnInfo(name = "csrf")
+    private String csrf;
+
+
+    public String getCookies() {
+        return cookies;
+    }
+
+    public void setCookies( String cookies) {
+        this.cookies = cookies;
+    }
+
+    public String getCsrf() {
+        return csrf;
+    }
+
+    public void setCsrf(String csrf) {
+        this.csrf = csrf;
+    }
+
+    public String getSession_id() {
+        return session_id;
+    }
+
+    public void setSession_id(String session_id) {
+        this.session_id = session_id;
+    }
+
+    @ColumnInfo(name = "session_id")
+    private String session_id;
+
+
     @ColumnInfo(name = "followed_by")
     private int followedBy;
 
-    @NonNull
+
     @ColumnInfo(name = "follows")
     private int follows;
 
@@ -112,12 +143,12 @@ public class Logins {
         this.userName = userName;
     }
 
-    @NonNull
+
     public String getProfilePic() {
         return profilePic;
     }
 
-    public void setProfilePic(@NonNull String profilePic) {
+    public void setProfilePic(String profilePic) {
         this.profilePic = profilePic;
     }
 

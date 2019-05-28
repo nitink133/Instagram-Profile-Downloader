@@ -1,22 +1,114 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FavouriteFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginTop="?actionBarSize"
+        android:layout_height="match_parent"
+        android:id="@+id/refresh_faves">
 
-    <in.blackpaper.instasp.view.RegularTextView
-        android:id="@+id/emptyListText"
-        android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:id="@+id/fave_users_stories_rv"
+            android:overScrollMode="never"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/loading_fave_stories"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/colorAccent"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Empty Favourite list"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-</FrameLayout>
+        style="@style/SpinKitView.Large.Wave"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center_horizontal"
+        android:id="@+id/no_net_faves">
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_refresh"
+            android:background="@android:color/transparent"
+            android:id="@+id/refresh_fave_stories_button"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:text="@string/error_loading_favorite_instagram_stories"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:text="@string/please_check_internet_connection_then_tap_refresh"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center_horizontal"
+        android:id="@+id/no_faves">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_sad"
+            android:id="@+id/sad_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/fave_text1"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:text="@string/no_ig_ers_favorited_yet"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/fave_text2"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorAccent"
+            android:text="@string/tap_on_user_icon_in_stories_feed_to_set_favorites"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/search_activity"
+        android:src="@drawable/ic_search"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:elevation="4dp"
+        android:layout_margin="16dp"/>
+
+
+</RelativeLayout>

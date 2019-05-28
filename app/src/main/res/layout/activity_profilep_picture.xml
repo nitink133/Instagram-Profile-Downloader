@@ -24,6 +24,7 @@
 
                 <ImageButton
                     android:layout_width="?actionBarSize"
+                    android:id="@+id/back"
                     android:layout_height="?actionBarSize"
                     android:layout_gravity="center_vertical"
                     android:background="@android:color/transparent"
@@ -32,17 +33,20 @@
 
 
                 <in.blackpaper.instasp.view.RegularEditText
+                    android:id="@+id/searchText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textColor="@color/black"
                     android:layout_gravity="center"
                     android:layout_marginRight="?actionBarSize"
                     android:background="@android:color/transparent"
                     android:hint="Search For User"
-                    android:textColorHint="@color/white" />
+                    android:textColorHint="@color/notDescriptionTextColor" />
             </LinearLayout>
 
             <ImageButton
                 android:layout_width="?actionBarSize"
+                android:id="@+id/search"
                 android:layout_height="?actionBarSize"
                 android:layout_gravity="end|right"
                 android:background="@android:color/transparent"
@@ -67,6 +71,7 @@
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
                     app:lottie_fileName="lottie/no_data.json" />
 
                 <in.blackpaper.instasp.view.RegularTextView
@@ -74,12 +79,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="No Data Found"
+                    android:text="No User Found"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"></androidx.recyclerview.widget.RecyclerView>

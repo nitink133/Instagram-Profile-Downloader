@@ -7,15 +7,18 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 
+import in.blackpaper.instasp.data.room.dao.Downloadsdao;
 import in.blackpaper.instasp.data.room.dao.LoginsDao;
+import in.blackpaper.instasp.data.room.tables.Downloads;
 import in.blackpaper.instasp.data.room.tables.Logins;
 
-@Database(entities = {Logins.class}, version = 1)
+@Database(entities = {Logins.class, Downloads.class}, version = 1)
 public abstract class LoginsDatabase extends RoomDatabase {
     private static LoginsDatabase INSTANCE;
     private static final String DATABASE_NAME = "wallet_database";
 
     public abstract LoginsDao loginsDao();
+    public abstract Downloadsdao downloadsdao();
 
     public static LoginsDatabase getDatabase(Context context) {
         if (INSTANCE == null) {

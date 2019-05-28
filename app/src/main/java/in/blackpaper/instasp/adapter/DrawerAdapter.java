@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.skydoves.elasticviews.ElasticLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,8 +68,8 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ItemViewHo
 
         DrawerMenuPojo drawerMenuPojo = items.get(position);
         holder.text.setText(drawerMenuPojo.getMenuName());
-//        Glide.with(context).load(drawerMenuList.getImage()).into(holder.image);
-        holder.image.setVisibility(View.GONE);
+        Glide.with(context).load(drawerMenuPojo.getImage()).into(holder.image);
+//        holder.image.setVisibility(View.GONE);
 
         holder.rootLayoutVIew.setOnClickListener(v->{
             if(eventListener!=null)
@@ -87,7 +88,7 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ItemViewHo
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         RegularTextView text;
         ImageView image;
-        LinearLayout rootLayoutVIew;
+        ElasticLayout rootLayoutVIew;
 
 
         public ItemViewHolder(View itemView) {

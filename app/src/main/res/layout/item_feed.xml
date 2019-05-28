@@ -1,94 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootLayoutVIew"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/white"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="5dp">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:contentDescription="TODO"
-        android:src="@mipmap/ic_launcher" />
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:orientation="vertical"
+      android:id="@+id/rootLayoutVIew"
+      android:layout_height="wrap_content">
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="400dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal">
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:background="@color/white"
+              android:elevation="4dp"
+              android:orientation="horizontal"
+              android:layout_height="?actionBarSize">
+              <de.hdodenhof.circleimageview.CircleImageView
+                  android:layout_width="?actionBarSize"
+                  android:id="@+id/userProfileImage"
+                  android:padding="8dp"
+                  android:layout_marginLeft="5dp"
+                  android:src="@drawable/ic_launcher_background"
+                  android:layout_height="?actionBarSize" />
 
-        <ImageView
-            android:id="@+id/heart"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="start"
-            android:layout_marginLeft="5dp"
-            android:contentDescription="TODO"
-            android:src="@drawable/ic_like" />
+              <in.blackpaper.instasp.view.RegularTextView
+                  android:id="@+id/username"
+                  android:layout_width="match_parent"
+                  android:text="Username"
+                  android:textSize="18sp"
+                  android:textColor="@color/black"
+                  android:layout_gravity="center"
+                  android:layout_marginLeft="10dp"
+                  android:layout_height="wrap_content" />
+          </LinearLayout>
 
-        <in.blackpaper.instasp.view.RegularTextView
-            android:id="@+id/caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
-            android:layout_weight="3"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            tools:text="This is user comment" />
+          <com.skydoves.elasticviews.ElasticImageView
+              android:layout_width="match_parent"
+              android:layout_marginTop="?actionBarSize"
+              android:src="@drawable/ic_launcher_background"
+              android:id="@+id/image"
+              android:layout_height="400dp" />
+          <androidx.viewpager.widget.ViewPager
+              android:id="@+id/pager"
+              android:visibility="gone"
+              android:layout_width="400dp"
+              android:layout_marginTop="?actionBarSize"
+              android:layout_gravity="center"
+              android:layout_height="400dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:orientation="horizontal">
+          <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+              android:id="@+id/dots_indicator"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="bottom|center"
+              android:visibility="gone"
+              android:layout_marginBottom="20dp"
+              app:dotsColor="@color/insta_background"
+              app:dotsCornerRadius="6dp"
+              app:dotsSize="10dp"
+              app:dotsSpacing="4dp"
+              app:dotsStrokeColor="@color/colorPrimaryDark"
+              app:dotsStrokeWidth="2dp" />
 
-            <ImageButton
-                android:id="@+id/download"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="end"
-                android:layout_marginRight="10dp"
-                android:background="@color/white_transparent"
-                android:contentDescription="TODO"
-                android:src="@drawable/ic_download" />
+      </FrameLayout>
 
-            <ImageButton
-                android:id="@+id/repost"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="start"
-                android:layout_marginRight="10dp"
-                android:background="@color/white_transparent"
-                android:contentDescription="TODO"
-                android:src="@drawable/ic_repost" />
 
-            <ImageButton
-                android:id="@+id/share"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="start"
-                android:layout_marginRight="10dp"
-                android:background="@color/white_transparent"
-                android:contentDescription="TODO"
-                android:src="@drawable/ic_share" />
-        </LinearLayout>
-    </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimaryDark" />
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="15dp"
+          android:orientation="horizontal">
 
-</LinearLayout>
+          <com.skydoves.elasticviews.ElasticImageView
+              android:id="@+id/heart"
+              android:layout_width="30dp"
+              android:layout_height="30dp"
+              android:layout_gravity="start"
+              android:layout_marginLeft="5dp"
+              android:padding="2dp"
+              android:contentDescription="TODO"
+              android:src="@drawable/ic_like" />
+
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="end|bottom"
+              android:layout_marginRight="10dp"
+              android:layout_weight="1"
+              android:gravity="end"
+              android:orientation="horizontal">
+
+              <com.skydoves.elasticviews.ElasticImageView
+                  android:id="@+id/download"
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:layout_gravity="end"
+                  android:layout_marginRight="10dp"
+                  android:contentDescription="TODO"
+                  android:src="@drawable/ic_download" />
+
+              <com.skydoves.elasticviews.ElasticImageView
+                  android:id="@+id/repost"
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:layout_gravity="start"
+                  android:layout_marginRight="10dp"
+                  android:contentDescription="TODO"
+                  android:src="@drawable/ic_repost" />
+
+              <com.skydoves.elasticviews.ElasticImageView
+                  android:id="@+id/share"
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:layout_gravity="start"
+                  android:layout_marginRight="10dp"
+                  android:contentDescription="TODO"
+                  android:src="@drawable/ic_share" />
+          </LinearLayout>
+      </LinearLayout>
+
+
+      <in.blackpaper.instasp.view.RegularTextView
+          android:id="@+id/caption"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="5dp"
+          android:layout_marginLeft="10dp"
+          android:layout_weight="3"
+          android:padding="15dp"
+          android:textColor="@color/black"
+          android:textSize="16sp"
+          tools:text="This is user comment" />
+
+  </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
 

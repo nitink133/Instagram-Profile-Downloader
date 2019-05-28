@@ -16,4 +16,7 @@ public class ToastUtils {
     public static void ErrorToast(Context context,String message){
         Toasty.error(context,message,Toasty.LENGTH_SHORT).show();
     }
+    public static void NORMAL(Context context,String message){
+        Toasty.normal(context,message,Toasty.LENGTH_SHORT).show();
+    }
 }

@@ -2,16 +2,17 @@ package in.blackpaper.instasp.data.repositry;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Insert;
+import androidx.room.Query;
 
 import java.util.List;
 
 import in.blackpaper.instasp.data.retrofit.ApiClient;
 import in.blackpaper.instasp.data.retrofit.response.InstagramLoginResponse;
 import in.blackpaper.instasp.data.retrofit.response.IntagramProfileResponse;
+import in.blackpaper.instasp.data.room.tables.Downloads;
 import in.blackpaper.instasp.data.room.tables.Logins;
 import io.reactivex.Observable;
 import retrofit2.Retrofit;
-import retrofit2.http.Query;
 
 public interface DataRepositry {
 
@@ -29,4 +30,14 @@ public interface DataRepositry {
     int deleteExistingUser(int id);
 
     Observable<IntagramProfileResponse> getUserProfileData(String url);
+
+    LiveData<List<Downloads>> getAllDownloads();
+
+
+    Downloads getSelectedDownload(int id);
+
+
+    long addDownloadedData(Downloads downloads);
+
+    int deleteDownloadedData(int id);
 }

@@ -16,17 +16,26 @@ import java.util.List;
 import in.blackpaper.instasp.R;
 import in.blackpaper.instasp.data.localpojo.DrawerMenuPojo;
 import in.blackpaper.instasp.data.retrofit.response.IntagramProfileResponse;
+import in.blackpaper.instasp.view.springyRecyclerView.SpringyAdapterAnimationType;
+import in.blackpaper.instasp.view.springyRecyclerView.SpringyAdapterAnimator;
 
 public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.ItemViewHolder> {
 
     private Context context;
     private List<IntagramProfileResponse.Edge> items;
 
+    private SpringyAdapterAnimator springyAdapterAnimator;
 
-    public UserProfileAdapter(Context context) {
+    public UserProfileAdapter(Context context,RecyclerView recyclerView) {
 
         this.context = context;
         this.items = new ArrayList<>();
+
+        springyAdapterAnimator = new SpringyAdapterAnimator(recyclerView);
+        // set SpringyAdapterAnimationType
+        springyAdapterAnimator.setSpringAnimationType(SpringyAdapterAnimationType.SCALE);
+        // (optional) add Spring Config
+        springyAdapterAnimator.addConfig(85,15);
 
     }
 
@@ -56,7 +65,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemLayoutView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_user_profile, parent, false);
-
+        springyAdapterAnimator.onSpringItemCreate(itemLayoutView);
         return new ItemViewHolder(itemLayoutView);
     }
 
@@ -65,10 +74,13 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
     public void onBindViewHolder(final ItemViewHolder holder, final int position) {
         IntagramProfileResponse.Edge edge = items.get(position);
         if (edge.getNode() != null) {
-            Glide.with(context).load(edge.getNode().getDisplayUrl()).into(holder.image);
+//            if (edge.getNode().getThumbnailResources() != null && edge.getNode().getThumbnailResources().size() > 0) {
+                Glide.with(context).load(edge.getNode().getDisplayUrl()).into(holder.image);
+//            }
 
 
         }
+        springyAdapterAnimator.onSpringItemBind(holder.itemView, position);
 
 
     }

@@ -1200,11 +1200,27 @@ public class IntagramProfileResponse {
 
     }
 
-    public class Edge {
+    public class Edge implements Parcelable{
+        public Edge(){}
 
         @SerializedName("node")
         @Expose
         private Node node;
+
+        protected Edge(Parcel in) {
+        }
+
+        public  final Creator<Edge> CREATOR = new Creator<Edge>() {
+            @Override
+            public Edge createFromParcel(Parcel in) {
+                return new Edge(in);
+            }
+
+            @Override
+            public Edge[] newArray(int size) {
+                return new Edge[size];
+            }
+        };
 
         public Node getNode() {
             return node;
@@ -1214,6 +1230,14 @@ public class IntagramProfileResponse {
             this.node = node;
         }
 
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+        }
     }
 
     public class Dimensions {

@@ -12,7 +12,7 @@ public class UserObject {
     private String realName;
     private String image;
     private Bitmap bitmap;
-    private Boolean isFaved;
+    private Boolean isFaved=false;
 
     public UserObject(){}
 

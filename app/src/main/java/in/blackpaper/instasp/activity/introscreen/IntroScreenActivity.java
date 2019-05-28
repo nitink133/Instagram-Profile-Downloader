@@ -25,8 +25,10 @@ import cz.msebera.android.httpclient.client.HttpClient;
 import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.util.EntityUtils;
+import in.blackpaper.instasp.BuildConfig;
 import in.blackpaper.instasp.GlobalConstant;
 import in.blackpaper.instasp.R;
+import in.blackpaper.instasp.activity.LoginActivity;
 import in.blackpaper.instasp.activity.dashboard.MainActivity;
 import in.blackpaper.instasp.adapter.IntroScreenAdapter;
 import in.blackpaper.instasp.base.BaseActivity;
@@ -37,7 +39,9 @@ import in.blackpaper.instasp.data.retrofit.response.InstagramLoginResponse;
 import in.blackpaper.instasp.data.room.tables.Logins;
 import in.blackpaper.instasp.dialog.AuthenticationDialog;
 import in.blackpaper.instasp.listener.AuthenticationListener;
+import in.blackpaper.instasp.utils.InstaUtils;
 import in.blackpaper.instasp.utils.Utility;
+import in.blackpaper.instasp.utils.ZoomstaUtil;
 
 public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> implements IntroScreenContractor.View, AuthenticationListener {
     ViewPager introSlider;
@@ -90,11 +94,9 @@ public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> impl
                 startActivity(new Intent(this, MainActivity.class));
             } else {
 
-
-                authenticationDialog = new AuthenticationDialog(this);
-                authenticationDialog.show(getSupportFragmentManager().beginTransaction(), AuthenticationDialog.TAG);
-//                authenticationDialog.setCancelable(true);
-//                authenticationDialog.show();
+                startActivity(new Intent(IntroScreenActivity.this, LoginActivity.class));
+//                authenticationDialog = new AuthenticationDialog(this);
+//                authenticationDialog.show(getSupportFragmentManager().beginTransaction(), AuthenticationDialog.TAG);
             }
         });
 
@@ -106,6 +108,9 @@ public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> impl
             return;
         PreferencesManager.savePref(GlobalConstant.TOKEN, auth_token);
 
+
+        if (BuildConfig.DEBUG)
+            Log.d(GlobalConstant.TOKEN, auth_token);
         token = auth_token;
         getUserInfoByAccessToken(token);
     }
@@ -163,14 +168,25 @@ public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> impl
                         PreferencesManager.savePref(GlobalConstant.FULL_NAME, jsonData.getString("full_name"));
                         PreferencesManager.savePref(GlobalConstant.BIO, jsonData.getString("bio"));
                         PreferencesManager.savePref(GlobalConstant.MEDIA, jsonData.getJSONObject("counts").getInt("media"));
-                        PreferencesManager.savePref(GlobalConstant.FOLLOWS,jsonData.getJSONObject("counts").getInt("follows"));
+                        PreferencesManager.savePref(GlobalConstant.FOLLOWS, jsonData.getJSONObject("counts").getInt("follows"));
                         PreferencesManager.savePref(GlobalConstant.FOLLOWED_BY, jsonData.getJSONObject("counts").getInt("followed_by"));
 
+                        InstaUtils.setUserId(jsonData.getString("id"));
+                        InstaUtils.setSessionId(token);
+
+
+                        ZoomstaUtil.setStringPreference(IntroScreenActivity.this, InstaUtils.getCookies(), "cooki");
+                        ZoomstaUtil.setStringPreference(IntroScreenActivity.this, InstaUtils.getCsrf(), "csrf");
+                        ZoomstaUtil.setStringPreference(IntroScreenActivity.this, InstaUtils.getSessionid(), "sessionid");
+                        ZoomstaUtil.setStringPreference(IntroScreenActivity.this, jsonData.getString("id"), "userid");
+                        ZoomstaUtil.setStringPreference(IntroScreenActivity.this, jsonData.getString("username"), "username");
 
 
                         Intent intent = new Intent(IntroScreenActivity.this, MainActivity.class);
-                        intent.putExtra("login_id", id);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.putExtra("user", jsonData.getString("id"));
                         startActivity(intent);
+                        IntroScreenActivity.this.overridePendingTransition(R.anim.enter_main, R.anim.exit_splash);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

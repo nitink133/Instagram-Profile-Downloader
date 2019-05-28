@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <in.blackpaper.instasp.view.BoldTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Title"
+        android:textColor="@color/black"
+        android:id="@+id/titleText"
+        android:textSize="18sp" />
+
+    <in.blackpaper.instasp.view.RegularTextView
+        android:layout_width="match_parent"
+        android:id="@+id/descriptionText"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:padding="5dp"
+        android:text="This is description"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <in.blackpaper.instasp.view.RegularButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/yes"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_rectangle_theme"
+            android:text="Yes" />
+
+        <in.blackpaper.instasp.view.RegularButton
+            android:layout_width="wrap_content"
+            android:id="@+id/no"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_rectangle_theme"
+            android:text="No" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Instagram Downloader</string>
-    <string name="insta_client_id">7b72511c9c8243158b1cef8f747d88b3</string>
+    <string name="insta_client_id">	35a16c292a454dc598c24fe3c7e1be60</string>
     <string name="insta_client_secret">3424a76b2451494ab44f9e3304f7cb16</string>
 
     <string name="redirect_url">https://instagram.com/</string>
@@ -17,6 +17,31 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
+    <string name="blank_iv">Search IG username to display profile picture</string>
+    <string name="no_profs">No profile pics saved yet</string>
+    <string name="error_loading_instagram_log_in_page">Error loading Instagram Log in page</string>
+    <string name="no_ig_ers_favorited_yet">No IG\'ers favorited yet</string>
+    <string name="user_icon">user_icon</string>
+    <string name="log_out">Log out</string>
+    <string name="logout">Log out</string>
+    <string name="sign_out_warning">Are you sure you want to Log out?</string>
+    <string name="no_saved_stories_found">No saved stories found</string>
+    <string name="tap_on_save_on_images_videos_to_save_them">Tap on save on Images/Videos to save them</string>
+    <string name="error_loading_instagram_stories">Error loading Instagram stories</string>
+    <string name="please_check_internet_connection_then_tap_refresh">Please check internet connection then tap refresh</string>
+    <string name="error_loading_favorite_instagram_stories">Error loading favorite Instagram stories</string>
+    <string name="tap_on_user_icon_in_stories_feed_to_set_favorites">Tap on user icon in stories feed to set favorites</string>
+    <string name="refresh">Please check internet connection then refresh</string>
+    <string name="no_fave_stories">No fave Instagram stories found</string>
+    <string name="search_users">search users</string>
+    <string name="no_search_history_found">No search history found</string>
+    <string name="clear_history">Clear history</string>
+    <string name="no_stories">No stories found</string>
+    <string name="default_notification_channel_id">default_notif_channel</string>
+    <string name="tap_on_search_icon_to_search_users">Tap on search icon to search users</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
 

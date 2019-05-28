@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/story_object"
+    android:visibility="gone"
+    tools:visibility="visible"
+    android:padding="5dp"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/story_icon"
+        android:layout_margin="15dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <in.blackpaper.instasp.view.RegularTextView
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/user_name"
+                android:padding="3dp"
+                android:text="n.i.t.i.n_k.h.a.n.n.a"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_width="wrap_content" />
+
+            <in.blackpaper.instasp.view.RegularTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:id="@+id/real_name"
+                android:layout_toRightOf="@id/story_icon"
+                android:layout_marginTop="5dp"
+                android:text="real name"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="50dp"
+            android:id="@+id/favourite"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="10dp"
+            app:lottie_fileName="lottie/favourite.json"/>
+
+    </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="2dp"/>
+
+</LinearLayout>

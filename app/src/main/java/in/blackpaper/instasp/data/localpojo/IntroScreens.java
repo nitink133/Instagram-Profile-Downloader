@@ -9,11 +9,11 @@ public class IntroScreens {
     static IntroScreenList screenList;
 
     public static ArrayList<IntroScreenList> getScreen() {
-        screenList = new IntroScreenList("Save what you want,\nwhen you want", R.drawable.ic_download_posts, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.");
+        screenList = new IntroScreenList("Authenticate with official Instagram", R.drawable.ic_instagram, "We respect your privacy,we are not storing your password.");
         introScreenLists.add(screenList);
-        screenList = new IntroScreenList("Focus your study around the Gita", R.drawable.ic_selfie, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.");
+        screenList = new IntroScreenList("Download your favourite picture", R.drawable.ic_download_posts, "Instasp let you download Instagram stories,profile picture and many more.");
         introScreenLists.add(screenList);
-        screenList = new IntroScreenList("Lost your phone again ?", R.drawable.ic_launcher_background, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.");
+        screenList = new IntroScreenList("Stories downloader", R.drawable.ic_selfie, "Download stories of your loved ones");
         introScreenLists.add(screenList);
         return introScreenLists;
     }

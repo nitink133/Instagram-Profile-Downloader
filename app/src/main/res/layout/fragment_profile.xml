@@ -1,163 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="?actionBarSize"
     android:orientation="vertical">
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="0dp"
-                android:id="@+id/profileImage"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_launcher_background" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profileImageView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_launcher_background" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_weight="1"
-                    android:baselineAligned="false"
-                    android:padding="5dp">
+                    android:layout_weight="3"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:baselineAligned="false"
+                        android:padding="10dp">
 
-                        <in.blackpaper.instasp.view.BoldTextView
-                            android:layout_width="match_parent"
-                            android:id="@+id/posts"
-                            android:textColor="@color/black"
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="200" />
+                            android:orientation="vertical">
 
-                        <in.blackpaper.instasp.view.RegularTextView
-                            android:layout_width="match_parent"
-                            android:textColor="@color/black"
+                            <in.blackpaper.instasp.view.BoldTextView
+                                android:id="@+id/posts"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="200"
+                                android:textColor="@color/black" />
+
+                            <in.blackpaper.instasp.view.RegularTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Posts"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Posts" />
+                            android:orientation="vertical">
+
+                            <in.blackpaper.instasp.view.BoldTextView
+                                android:id="@+id/followedBy"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="2000"
+                                android:textColor="@color/black" />
+
+                            <in.blackpaper.instasp.view.RegularTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Followers"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <in.blackpaper.instasp.view.BoldTextView
+                                android:id="@+id/follows"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="586"
+                                android:textColor="@color/black" />
+
+                            <in.blackpaper.instasp.view.RegularTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Following"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <in.blackpaper.instasp.view.BoldTextView
-                            android:layout_width="match_parent"
-                            android:id="@+id/followedBy"
-                            android:textColor="@color/black"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="2000" />
-
-                        <in.blackpaper.instasp.view.RegularTextView
-                            android:layout_width="match_parent"
-                            android:textColor="@color/black"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Followers" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <in.blackpaper.instasp.view.BoldTextView
-                            android:layout_width="match_parent"
-                            android:textColor="@color/black"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/follows"
-                            android:layout_weight="1"
-                            android:text="586" />
-
-                        <in.blackpaper.instasp.view.RegularTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:layout_weight="1"
-                            android:text="Following" />
-                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <in.blackpaper.instasp.view.BoldTextView
+                    android:id="@+id/fullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="nitinkhanna"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <in.blackpaper.instasp.view.RegularTextView
+                    android:id="@+id/bio"
+                    android:layout_width="match_parent"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="This is user bio field this could be multi line textview We have to take care of this ."
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/ic_rectangle_theme"/>
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:padding="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"></androidx.recyclerview.widget.RecyclerView>
+
+                <in.blackpaper.instasp.view.BoldTextView
+                    android:id="@+id/noDataText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="No data found"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </FrameLayout>
         </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
-
-            <in.blackpaper.instasp.view.BoldTextView
-                android:layout_width="match_parent"
-                android:textColor="@color/black"
-                android:layout_height="wrap_content"
-                android:id="@+id/fullName"
-                android:text="nitinkhana"
-                android:textSize="18sp" />
-
-            <in.blackpaper.instasp.view.RegularTextView
-                android:layout_width="match_parent"
-                android:id="@+id/bio"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_weight="3"
-                android:text="User bio"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_weight="5"></androidx.recyclerview.widget.RecyclerView>
-
-            <in.blackpaper.instasp.view.BoldTextView
-                android:layout_width="wrap_content"
-                android:id="@+id/noDataText"
-                android:visibility="gone"
-                tools:visibility="visible"
-                android:text="No data found"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content" />
-        </FrameLayout>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

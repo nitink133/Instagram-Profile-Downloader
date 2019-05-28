@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#D3E1306C</color>
-    <color name="colorPrimaryDark">#e1306c</color>
+    <color name="colorPrimary">#FAFAFA</color>
+    <color name="colorPrimaryDark">#F0F0F0</color>
     <color name="colorAccent">#000</color>
 
 
     <color name="white">#FFF</color>
     <color name="black">#000</color>
 
-    <color name="grey">#F9F9F9</color>
+    <color name="grey">#EEEEEE</color>
 
     <color name="black_transparent">#97000000</color>
     <color name="white_transparent">#85F8F6F6</color>
     <color name="insta_background">#e1306c</color>
+    <color name="starColor">#F2B01E</color>
+    <color name="textHintColor">#8cffffff</color>
+    <color name="commentBoxBackground">#E4EDF2</color>
+    <color name="notDescriptionTextColor">#A7A7AF</color>
+
+
 </resources>

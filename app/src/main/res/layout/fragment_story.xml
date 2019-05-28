@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark"
+    android:animateLayoutChanges="true"
+   >
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:id="@+id/loading_saved_item"
+        app:SpinKit_Color="@color/colorAccent"
+        android:layout_gravity="center"
+        style="@style/SpinKitView.Large.Wave"/>
+
+    <FrameLayout
+        android:id="@+id/video_layout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black">
+
+        <com.universalvideoview.UniversalVideoView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            app:uvv_fitXY="false" />
+
+        <com.universalvideoview.UniversalMediaController
+            android:id="@+id/media_controller"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:uvv_scalable="false" />
+
+    </FrameLayout>
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/story_imageview"/>
+
+    <ImageButton
+        android:layout_width="80dp"
+        android:alpha="0.85"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_play_circle"
+        android:id="@+id/story_video"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/story_button_options"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:padding="20dp">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/round_button_border"
+            android:src="@drawable/ic_share"
+            android:id="@+id/story_button_share"/>
+
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/round_button_border"
+            android:src="@drawable/ic_repost"
+            android:id="@+id/repost"/>
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:padding="7dp"
+            android:layout_toRightOf="@id/story_button_share"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/round_button_border"
+
+            android:src="@drawable/ic_save"
+            android:id="@+id/story_button_save"/>
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="40dp"
+            android:padding="7dp"
+            android:layout_toRightOf="@id/story_button_share"
+            android:background="@drawable/round_button_border"
+            android:src="@drawable/ic_delete"
+            android:id="@+id/story_button_delete"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

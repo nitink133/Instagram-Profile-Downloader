@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -29,6 +30,7 @@ import cz.msebera.android.httpclient.client.methods.HttpGet;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.util.EntityUtils;
 import cz.msebera.android.httpclient.util.TextUtils;
+import de.hdodenhof.circleimageview.CircleImageView;
 import in.blackpaper.instasp.ApiUtils;
 import in.blackpaper.instasp.GlobalConstant;
 import in.blackpaper.instasp.R;
@@ -46,9 +48,10 @@ public class ProfileFragment extends BaseFragment {
 
     List<IntagramProfileResponse.Edge> edgeList;
     String username = "";
-    String fullName, bio,profile_image;
+    private CircleImageView profileImageView;
+    String fullName, bio, profile_image;
     int media, follows, followed_by;
-    BoldTextView posts,followedBy,followsText,fullNameText;
+    BoldTextView posts, followedBy, followsText, fullNameText;
     RegularTextView bioText;
     private OnProfileFragmentInteractionListener mListener;
     Context context;
@@ -63,12 +66,19 @@ public class ProfileFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        profile_image = PreferencesManager.getPref(GlobalConstant.USERNAME);
+        profile_image = PreferencesManager.getPref(GlobalConstant.PROFILE_PIC);
         fullName = PreferencesManager.getPref(GlobalConstant.FULL_NAME);
-        bio = PreferencesManager.getPref(GlobalConstant.BIO);
-        media = PreferencesManager.getPref(GlobalConstant.MEDIA);
-        follows = PreferencesManager.getPref(GlobalConstant.FOLLOWS);
-        followed_by = PreferencesManager.getPref(GlobalConstant.FOLLOWED_BY);
+        try {
+            bio = PreferencesManager.getPref(GlobalConstant.BIO);
+            media = PreferencesManager.getPref(GlobalConstant.MEDIA);
+            follows = PreferencesManager.getPref(GlobalConstant.FOLLOWS);
+            followed_by = PreferencesManager.getPref(GlobalConstant.FOLLOWED_BY);
+        }catch (Exception e){
+            bio = "";
+            media = -1;
+            follows= -1;
+            followed_by = -1;
+        }
 
 
         if (getArguments() != null) {
@@ -83,27 +93,31 @@ public class ProfileFragment extends BaseFragment {
         recyclerView = view.findViewById(R.id.recycler_view);
         noDataText = view.findViewById(R.id.noDataText);
         fullNameText = view.findViewById(R.id.fullName);
-        bioText= view.findViewById(R.id.bio);
-        posts= view.findViewById(R.id.posts);
-        followedBy= view.findViewById(R.id.followedBy);
+        profileImageView = view.findViewById(R.id.profileImageView);
+
+        bioText = view.findViewById(R.id.bio);
+        posts = view.findViewById(R.id.posts);
+        followedBy = view.findViewById(R.id.followedBy);
         followsText = view.findViewById(R.id.follows);
-        if(!TextUtils.isEmpty(fullName))
+        if (!TextUtils.isEmpty(fullName))
             fullNameText.setText(fullName);
 
-        if(!TextUtils.isEmpty(bio))
+        if (!TextUtils.isEmpty(bio))
             bioText.setText(bio);
 
-        if(!TextUtils.isEmpty(String.valueOf(media)))
+        if (!TextUtils.isEmpty(String.valueOf(media)))
             posts.setText(String.valueOf(media));
 
-        if(!TextUtils.isEmpty(String.valueOf(followed_by)))
+        if (!TextUtils.isEmpty(String.valueOf(followed_by)))
             followedBy.setText(String.valueOf(followed_by));
 
-        if(!TextUtils.isEmpty(String.valueOf(follows)))
+        if (!TextUtils.isEmpty(String.valueOf(follows)))
             followsText.setText(String.valueOf(follows));
 
-        userProfileAdapter = new UserProfileAdapter(getContext());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        if (!TextUtils.isEmpty(String.valueOf(profile_image)))
+            Glide.with(context).load(profile_image).into(profileImageView);
+
+        userProfileAdapter = new UserProfileAdapter(getContext(),recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(context, 3));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(userProfileAdapter);
