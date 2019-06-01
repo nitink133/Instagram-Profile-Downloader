@@ -28,6 +28,7 @@ import cz.msebera.android.httpclient.util.EntityUtils;
 import in.blackpaper.instasp.BuildConfig;
 import in.blackpaper.instasp.GlobalConstant;
 import in.blackpaper.instasp.R;
+import in.blackpaper.instasp.activity.InstagramOfficalLoginActivity;
 import in.blackpaper.instasp.activity.LoginActivity;
 import in.blackpaper.instasp.activity.dashboard.MainActivity;
 import in.blackpaper.instasp.adapter.IntroScreenAdapter;
@@ -94,7 +95,8 @@ public class IntroScreenActivity extends BaseActivity<IntroScreenPresenter> impl
                 startActivity(new Intent(this, MainActivity.class));
             } else {
 
-                startActivity(new Intent(IntroScreenActivity.this, LoginActivity.class));
+
+                startActivity(new Intent(IntroScreenActivity.this, InstagramOfficalLoginActivity.class));
 //                authenticationDialog = new AuthenticationDialog(this);
 //                authenticationDialog.show(getSupportFragmentManager().beginTransaction(), AuthenticationDialog.TAG);
             }

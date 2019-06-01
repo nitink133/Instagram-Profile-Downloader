@@ -24,8 +24,8 @@
 
                 <WebView
                     android:id="@+id/webView"
-                    android:layout_width="500dp"
-                    android:layout_height="400dp"></WebView>
+                    android:layout_width="400dp"
+                    android:layout_height="match_parent"></WebView>
             </LinearLayout>
 
         </HorizontalScrollView>

@@ -309,12 +309,12 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
     public void addItemsInDrawer() {
         List<DrawerMenuPojo> drawerMenuPojoList = new ArrayList<>();
         if (!isAddAccountViewVisible) {
-            DrawerMenuPojo drawerMenuPojo = new DrawerMenuPojo();
-            drawerMenuPojo.setMenuName(GlobalConstant.FEED);
-            drawerMenuPojo.setImage(R.drawable.ic_feed);
-            drawerMenuPojoList.add(drawerMenuPojo);
+//            DrawerMenuPojo drawerMenuPojo = new DrawerMenuPojo();
+////            drawerMenuPojo.setMenuName(GlobalConstant.FEED);
+////            drawerMenuPojo.setImage(R.drawable.ic_feed);
+//            drawerMenuPojoList.add(drawerMenuPojo);
 
-            drawerMenuPojo = new DrawerMenuPojo();
+            DrawerMenuPojo drawerMenuPojo = new DrawerMenuPojo();
             drawerMenuPojo.setMenuName(GlobalConstant.STORIES);
             drawerMenuPojo.setImage(R.drawable.ic_story);
             drawerMenuPojoList.add(drawerMenuPojo);
@@ -505,12 +505,12 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
                                         Glide.with(MainActivity.this).load(profileImage).into(mProfileImage);
                                     if (username != null && !TextUtils.isEmpty(username))
                                         mUsername.setText(username);
-                                    FeedFragment feedFragment = new FeedFragment();
-                                    Bundle bundle = new Bundle();
-                                    bundle.putParcelableArrayList("feed_list", (ArrayList<? extends Parcelable>) edgeList);
-                                    feedFragment.setArguments(bundle);
+//                                    StoriesFragment storiesFragment = new StoriesFragment();
+//                                    Bundle bundle = new Bundle();
+//                                    bundle.putParcelableArrayList("feed_list", (ArrayList<? extends Parcelable>) edgeList);
+//                                    storiesFragment.setArguments(bundle);
                                     try {
-                                        changeFragment(feedFragment);
+                                        changeFragment(new StoriesFragment());
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }

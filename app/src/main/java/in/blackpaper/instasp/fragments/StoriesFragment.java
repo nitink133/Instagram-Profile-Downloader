@@ -42,6 +42,7 @@ public class StoriesFragment extends Fragment {
 
 
     private List<UserObject> userObjectList = new ArrayList<>();
+    private List<UserObject> userObjectListForSearching = new ArrayList<>();
     private RecyclerView recyclerView;
     private StoriesListAdapter adapter;
     private SpinKitView wave;
@@ -70,8 +71,10 @@ public class StoriesFragment extends Fragment {
                 wave.setVisibility(View.VISIBLE);
             if (noNet.isShown())
                 noNet.setVisibility(View.GONE);
-            if (!userObjectList.isEmpty())
+            if (!userObjectList.isEmpty()) {
                 userObjectList.clear();
+                userObjectListForSearching.clear();
+            }
             adapter.setUserObjects(userObjectList);
         }
 
@@ -79,6 +82,8 @@ public class StoriesFragment extends Fragment {
         protected String doInBackground(Boolean... booleans) {
             try {
                 userObjectList.addAll(InstaUtils.usersList(getActivity()));
+
+                userObjectListForSearching.addAll(userObjectList);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -153,8 +158,8 @@ public class StoriesFragment extends Fragment {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if (!userObjectList.isEmpty())
-                    userObjectList.clear();
+                if (!userObjectList.isEmpty()) userObjectList.clear();
+                userObjectListForSearching.clear();
 
                 loadStories();
             }

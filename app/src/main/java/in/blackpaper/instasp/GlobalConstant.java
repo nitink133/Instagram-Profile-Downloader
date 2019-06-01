@@ -15,6 +15,8 @@ public class GlobalConstant {
 
     public static final String storeLink = "https://play.google.com/store/apps/details?id=";
 
+    public static final String INSTAGRAM_LOGIN_URL = "https://www.instagram.com/accounts/login/";
+
     //Drawer Menu
 
     public static final String FEED = "Feed";
