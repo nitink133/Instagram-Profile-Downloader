@@ -32,6 +32,7 @@ import in.blackpaper.instasp.models.UserObject;
 import in.blackpaper.instasp.utils.OverviewDialog;
 import in.blackpaper.instasp.utils.ToastUtils;
 import in.blackpaper.instasp.utils.ZoomstaUtil;
+import in.blackpaper.instasp.view.BoldTextView;
 import in.blackpaper.instasp.view.RegularTextView;
 
 public class FaveListAdapter extends RecyclerView.Adapter<FaveListAdapter.FaveListHolder> {
@@ -43,12 +44,12 @@ public class FaveListAdapter extends RecyclerView.Adapter<FaveListAdapter.FaveLi
     private int count, prof;
 
 
-    public FaveListAdapter(Activity context){
+    public FaveListAdapter(Activity context) {
         this.userObjects = new ArrayList<>();
         this.context = context;
     }
 
-    public void setUserObjects(List<UserObject> itemList){
+    public void setUserObjects(List<UserObject> itemList) {
         userObjects.clear();
         userObjects.addAll(itemList);
         notifyDataSetChanged();
@@ -68,9 +69,10 @@ public class FaveListAdapter extends RecyclerView.Adapter<FaveListAdapter.FaveLi
 
         holder.storyObject.setVisibility(View.VISIBLE);
 
-        if(object.getFaved()){
+        if (object.getFaved()) {
             startCheckAnimation(holder);
-        }else{}
+        } else {
+        }
         holder.realName.setText(object.getRealName());
         holder.userName.setText(object.getUserName());
         Glide.with(context).load(object.getImage()).thumbnail(0.2f).into(holder.userIcon);
@@ -100,18 +102,18 @@ public class FaveListAdapter extends RecyclerView.Adapter<FaveListAdapter.FaveLi
             }
         });
 
-        holder.favourite.setOnClickListener(v->{
-            if(!object.getFaved()){
-                ZoomstaUtil.addFaveUser(context,object.getUserId());
+        holder.favourite.setOnClickListener(v -> {
+            if (!object.getFaved()) {
+                ZoomstaUtil.addFaveUser(context, object.getUserId());
                 startCheckAnimation(holder);
                 object.setFaved(true);
-                ToastUtils.SuccessToast(context, object.getUserName()+ " added to fave IG'ers");
+                ToastUtils.SuccessToast(context, object.getUserName() + " added to fave IG'ers");
 
             } else {
-                ZoomstaUtil.removeFaveUser(context,object.getUserId());
+                ZoomstaUtil.removeFaveUser(context, object.getUserId());
                 startCheckAnimation(holder);
                 object.setFaved(false);
-                ToastUtils.SuccessToast(context, object.getUserName()+ " removed from fave IG'ers");
+                ToastUtils.SuccessToast(context, object.getUserName() + " removed from fave IG'ers");
             }
         });
 
@@ -127,14 +129,14 @@ public class FaveListAdapter extends RecyclerView.Adapter<FaveListAdapter.FaveLi
         return super.getItemViewType(position);
     }
 
-    public class FaveListHolder extends RecyclerView.ViewHolder{
+    public class FaveListHolder extends RecyclerView.ViewHolder {
         private CircleImageView userIcon;
-        private TextView userName;
+        private BoldTextView userName;
         private TextView realName;
         private LinearLayout storyObject;
         LottieAnimationView favourite;
 
-        public FaveListHolder(View view){
+        public FaveListHolder(View view) {
             super(view);
 
             userIcon = view.findViewById(R.id.story_icon);

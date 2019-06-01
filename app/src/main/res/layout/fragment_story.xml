@@ -102,6 +102,7 @@
             android:layout_width="40dp"
             android:layout_marginLeft="10dp"
             android:layout_height="40dp"
+            android:visibility="gone"
             android:padding="7dp"
             android:layout_toRightOf="@id/story_button_share"
             android:background="@drawable/round_button_border"

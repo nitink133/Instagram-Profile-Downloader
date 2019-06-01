@@ -12,6 +12,15 @@ public class StoryModel implements Parcelable {
     private String fileName;
     private int type;
     private Boolean isSaved;
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public StoryModel(){}
 

@@ -34,21 +34,20 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <in.blackpaper.instasp.view.RegularTextView
+                <in.blackpaper.instasp.view.BoldTextView
                     android:id="@+id/user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="3"
                     android:padding="3dp"
                     android:text="n.i.t.i.n_k.h.a.n.n.a"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
                 <in.blackpaper.instasp.view.RegularTextView
                     android:id="@+id/real_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@id/story_icon"
                     android:text="real name"

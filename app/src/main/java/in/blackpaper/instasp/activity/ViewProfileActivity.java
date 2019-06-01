@@ -118,7 +118,7 @@ public class ViewProfileActivity extends BaseActivity {
                         .withListener(new PermissionListener() {
                             @Override
                             public void onPermissionGranted(PermissionGrantedResponse response) {
-                                delete.setVisibility(View.VISIBLE);
+//                                delete.setVisibility(View.VISIBLE);
                                 saveImage(bitmap);
                             }
 

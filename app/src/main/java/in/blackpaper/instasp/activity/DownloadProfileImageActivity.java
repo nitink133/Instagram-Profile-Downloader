@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,7 +43,7 @@ import in.blackpaper.instasp.view.RegularTextView;
 
 public class DownloadProfileImageActivity extends AppCompatActivity {
     RegularEditText username;
-    RegularButton search;
+    RegularButton search, openInstagram;
     ProgressBar progress_bar;
     Context context;
     Bitmap bitmap;
@@ -59,6 +60,7 @@ public class DownloadProfileImageActivity extends AppCompatActivity {
         search = findViewById(R.id.search);
         progress_bar = findViewById(R.id.progress_bar);
         back = findViewById(R.id.back);
+        openInstagram = findViewById(R.id.openInstagram);
 
         search.setOnClickListener(v -> {
             if (TextUtils.isEmpty(username.getText().toString()))
@@ -69,6 +71,24 @@ public class DownloadProfileImageActivity extends AppCompatActivity {
                 new RequestInstagramAPI(ApiUtils.getUsernameUrl(usernameText)).execute();
             }
 
+        });
+
+
+        openInstagram.setOnClickListener(v -> {
+            String _username = username.getText().toString();
+            if (TextUtils.isEmpty(_username)) {
+                ToastUtils.ErrorToast(context, "Username field can't be empty");
+            } else {
+                final String appLink = "http://instagram.com/_u/" + _username;
+                final String webLink = "http://instagram.com/" + _username;
+
+                Uri uri = Uri.parse(appLink);
+                Intent insta = new Intent(Intent.ACTION_VIEW, uri);
+                insta.setPackage("com.instagram.android");
+
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(webLink)));
+
+            }
         });
 
         back.setOnClickListener(v -> {

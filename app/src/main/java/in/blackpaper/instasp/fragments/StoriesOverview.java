@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -38,6 +39,13 @@ public class StoriesOverview extends DialogFragment {
     private String name, id;
     private LinearLayout noNet, noStories;
     private SpinKitView wave;
+    private ImageView back;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.FullScreenDialogStyle);
+    }
 
     @Nullable
     @Override
@@ -49,6 +57,7 @@ public class StoriesOverview extends DialogFragment {
         noNet = view.findViewById(R.id.no_net_overview_stories);
         wave = view.findViewById(R.id.loading_stories_overview);
         noStories = view.findViewById(R.id.no_stories_found);
+        back = view.findViewById(R.id.back);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
@@ -69,6 +78,11 @@ public class StoriesOverview extends DialogFragment {
         else
             ZoomstaUtil.setIntegerPreference(getActivity(), 1, "clickCount");
         setStories();
+
+
+        back.setOnClickListener(v->{
+            dismiss();
+        });
 
         return view;
     }

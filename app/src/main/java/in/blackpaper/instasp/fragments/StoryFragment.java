@@ -91,6 +91,7 @@ public class StoryFragment extends Fragment {
     private UniversalVideoView videoView;
     private UniversalMediaController mediaController;
     private ImageButton play;
+    private Context context;
     private static Boolean isFromNet;
     private String vidUrl;
     private File cachedFile;
@@ -109,6 +110,7 @@ public class StoryFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        this.context = context;
         if (context instanceof StoryListener)
             storyListener = (StoryListener) context;
     }
@@ -192,7 +194,7 @@ public class StoryFragment extends Fragment {
                             @Override
                             public void onPermissionGranted(PermissionGrantedResponse response) {
 
-                                delete.setVisibility(View.VISIBLE);
+//                                delete.setVisibility(View.VISIBLE);
                                 if (url.endsWith(".jpg") && bitmap != null) {
                                     saveImage(bitmap);
                                 } else {
@@ -302,7 +304,7 @@ public class StoryFragment extends Fragment {
 
                 }
 
-                delete.setVisibility(View.VISIBLE);
+//                delete.setVisibility(View.VISIBLE);
 
             }
         } else {
@@ -445,7 +447,10 @@ public class StoryFragment extends Fragment {
             alertDialog.dismiss();
 
             storyListener.deletePage(true);
-            ToastUtils.SuccessToast(getActivity(), "File deleted successfully");
+
+            if(context!=null)
+            ToastUtils.SuccessToast(context, "File deleted successfully");
+
         });
         view2.findViewById(R.id.no).setOnClickListener(v12 -> alertDialog.dismiss());
 
@@ -559,7 +564,7 @@ public class StoryFragment extends Fragment {
 
             Downloads downloads = new Downloads();
             downloads.setUser_id("");
-            downloads.setPath(file.getAbsolutePath());
+            downloads.setPath(file.getAbsolutePath() + "/" + fileName);
             downloads.setUsername("");
             downloads.setType(1);
             downloads.setFilename(fileName);

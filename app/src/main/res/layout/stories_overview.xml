@@ -1,100 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@color/white"
-    android:animateLayoutChanges="true">
+    android:orientation="vertical">
 
-    <TextView
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/stories_overview_username"
-        android:padding="10dp"
-        android:layout_alignParentTop="true"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        android:gravity="center"
-        android:background="@color/colorPrimaryDark"/>
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimaryDark">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:id="@+id/back"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_back_24px" />
+
+
+            <TextView
+                android:id="@+id/stories_overview_username"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/stories_overview_rv"
         android:layout_width="match_parent"
         android:layout_height="600dp"
-        android:overScrollMode="never"
         android:layout_below="@id/stories_overview_username"
-        android:id="@+id/stories_overview_rv"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary"
+        android:overScrollMode="never" />
 
     <LinearLayout
+        android:id="@+id/no_net_overview_stories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:visibility="gone"
         android:gravity="center_horizontal"
-        android:id="@+id/no_net_overview_stories">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <ImageButton
+            android:id="@+id/refresh_overview_stories_button"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_refresh"
             android:background="@android:color/transparent"
-            android:id="@+id/refresh_overview_stories_button"/>
+            android:src="@drawable/ic_refresh" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textStyle="bold"
+            android:text="@string/error_loading_instagram_stories"
             android:textColor="@color/colorAccent"
-            android:text="@string/error_loading_instagram_stories"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textStyle="bold"
+            android:text="@string/please_check_internet_connection_then_tap_refresh"
             android:textColor="@color/colorAccent"
-            android:text="@string/please_check_internet_connection_then_tap_refresh"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/loading_stories_overview"
+        style="@style/SpinKitView.Large.Wave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:id="@+id/loading_stories_overview"
-        android:visibility="gone"
-        app:SpinKit_Color="@color/colorAccent"
         android:layout_gravity="center"
-        style="@style/SpinKitView.Large.Wave"/>
+        android:visibility="gone"
+        app:SpinKit_Color="@color/colorAccent" />
 
     <LinearLayout
+        android:id="@+id/no_stories_found"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:visibility="gone"
         android:gravity="center_horizontal"
-        android:id="@+id/no_stories_found">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <ImageView
+            android:id="@+id/sad_icon"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/ic_sad"
-            android:id="@+id/sad_icon"/>
+            android:src="@drawable/ic_sad" />
 
         <TextView
+            android:id="@+id/fave_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:id="@+id/fave_text1"
-            android:textStyle="bold"
+            android:text="@string/no_stories"
             android:textColor="@color/colorAccent"
-            android:text="@string/no_stories"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

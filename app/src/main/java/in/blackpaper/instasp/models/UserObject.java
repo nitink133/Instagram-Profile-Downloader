@@ -1,12 +1,14 @@
 package in.blackpaper.instasp.models;
 
 import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by tirgei on 10/31/17.
  */
 
-public class UserObject {
+public class UserObject implements Parcelable {
     private String userName;
     private String userId;
     private String realName;
@@ -15,6 +17,28 @@ public class UserObject {
     private Boolean isFaved=false;
 
     public UserObject(){}
+
+    protected UserObject(Parcel in) {
+        userName = in.readString();
+        userId = in.readString();
+        realName = in.readString();
+        image = in.readString();
+        bitmap = in.readParcelable(Bitmap.class.getClassLoader());
+        byte tmpIsFaved = in.readByte();
+        isFaved = tmpIsFaved == 0 ? null : tmpIsFaved == 1;
+    }
+
+    public static final Creator<UserObject> CREATOR = new Creator<UserObject>() {
+        @Override
+        public UserObject createFromParcel(Parcel in) {
+            return new UserObject(in);
+        }
+
+        @Override
+        public UserObject[] newArray(int size) {
+            return new UserObject[size];
+        }
+    };
 
     public Boolean getFaved() {
         return isFaved;
@@ -62,5 +86,20 @@ public class UserObject {
 
     public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(userName);
+        dest.writeString(userId);
+        dest.writeString(realName);
+        dest.writeString(image);
+        dest.writeParcelable(bitmap, flags);
+        dest.writeByte((byte) (isFaved == null ? 0 : isFaved ? 1 : 2));
     }
 }

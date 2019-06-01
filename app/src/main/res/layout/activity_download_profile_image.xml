@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:layout_marginTop="?actionBarSize"
         android:orientation="vertical">
 
         <LinearLayout
@@ -93,7 +93,19 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/ic_rectangle_theme"
-            android:text="Search"
+            android:text="Get"
+            android:textColor="@color/white" />
+
+        <in.blackpaper.instasp.view.RegularButton
+            android:id="@+id/openInstagram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ic_rectangle_theme"
+            android:text="Open Instagram"
             android:textColor="@color/white" />
     </LinearLayout>
 

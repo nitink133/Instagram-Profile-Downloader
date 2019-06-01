@@ -3,13 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:animateLayoutChanges="true"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:elevation="2dp">
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +31,9 @@
 
 
             <in.blackpaper.instasp.view.RegularTextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:id="@+id/title"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginRight="?actionBarSize"
@@ -38,88 +43,99 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/notDescriptionTextColor"
                 android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="30dp"
+                android:visibility="gone"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_delete" />
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/stories_overview_rv"
+            android:layout_width="match_parent"
+            android:layout_marginTop="?actionBarSize"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:overScrollMode="never" />
+
+        <LinearLayout
+            android:id="@+id/no_net_overview_stories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/refresh_overview_stories_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_refresh" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/error_loading_instagram_stories"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/please_check_internet_connection_then_tap_refresh"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/loading_stories_overview"
+            style="@style/SpinKitView.Large.Wave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:SpinKit_Color="@color/colorAccent" />
+
+        <LinearLayout
+            android:id="@+id/no_stories_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/sad_icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_sad" />
+
+            <TextView
+                android:id="@+id/fave_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/no_stories"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
         </LinearLayout>
 
 
     </FrameLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/stories_overview_rv"
-        android:layout_width="match_parent"
-        android:layout_marginTop="?actionBarSize"
-        android:layout_height="600dp"
-        android:background="@color/colorPrimary"
-        android:overScrollMode="never" />
-
-    <LinearLayout
-        android:id="@+id/no_net_overview_stories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <ImageButton
-            android:id="@+id/refresh_overview_stories_button"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_refresh" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/error_loading_instagram_stories"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/please_check_internet_connection_then_tap_refresh"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/loading_stories_overview"
-        style="@style/SpinKitView.Large.Wave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        app:SpinKit_Color="@color/colorAccent" />
-
-    <LinearLayout
-        android:id="@+id/no_stories_found"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/sad_icon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/ic_sad" />
-
-        <TextView
-            android:id="@+id/fave_text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/no_stories"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
-
-    </LinearLayout>
 
 
 </FrameLayout>

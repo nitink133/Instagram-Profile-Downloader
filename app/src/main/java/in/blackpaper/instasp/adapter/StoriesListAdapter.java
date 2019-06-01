@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import in.blackpaper.instasp.BuildConfig;
 import in.blackpaper.instasp.R;
+import in.blackpaper.instasp.activity.SearchActivity;
 import in.blackpaper.instasp.activity.dashboard.MainActivity;
 import in.blackpaper.instasp.fragments.StoriesOverview;
 import in.blackpaper.instasp.models.UserObject;
@@ -33,25 +36,30 @@ import in.blackpaper.instasp.utils.InstaUtils;
 import in.blackpaper.instasp.utils.OverviewDialog;
 import in.blackpaper.instasp.utils.ToastUtils;
 import in.blackpaper.instasp.utils.ZoomstaUtil;
+import in.blackpaper.instasp.view.BoldTextView;
 import in.blackpaper.instasp.view.RegularTextView;
 
-public class StoriesListAdapter extends RecyclerView.Adapter<StoriesListAdapter.StoriesListHolder> {
+public class StoriesListAdapter extends RecyclerView.Adapter<StoriesListAdapter.StoriesListHolder> implements Filterable {
     private static final String TAG = "StoriesListAdapter";
     private Activity context;
     private List<UserObject> userObjects;
     private OverviewDialog overviewDialog;
     private FragmentManager fm;
     private int count, prof;
+    private List<UserObject> mDisplayedValues;    // Values to be displayed
 
 
     public StoriesListAdapter(Activity context) {
         this.userObjects = new ArrayList<>();
+        this.mDisplayedValues = new ArrayList<>();
         this.context = context;
     }
 
     public void setUserObjects(List<UserObject> list) {
         userObjects.clear();
         userObjects.addAll(list);
+        mDisplayedValues.clear();
+        mDisplayedValues.addAll(userObjects);
         notifyDataSetChanged();
     }
 
@@ -66,8 +74,11 @@ public class StoriesListAdapter extends RecyclerView.Adapter<StoriesListAdapter.
     @SuppressLint("StaticFieldLeak")
     @Override
     public void onBindViewHolder(StoriesListHolder holder, final int position) {
-        final UserObject object = userObjects.get(position);
-        fm = ((MainActivity) context).getSupportFragmentManager();
+        final UserObject object = mDisplayedValues.get(position);
+        if (context instanceof MainActivity)
+            fm = ((MainActivity) context).getSupportFragmentManager();
+        else
+            fm = ((SearchActivity) context).getSupportFragmentManager();
         holder.storyObject.setVisibility(View.VISIBLE);
 
         holder.realName.setText(object.getRealName());
@@ -133,7 +144,7 @@ public class StoriesListAdapter extends RecyclerView.Adapter<StoriesListAdapter.
 
     @Override
     public int getItemCount() {
-        return userObjects.size();
+        return mDisplayedValues.size();
     }
 
     @Override
@@ -141,9 +152,68 @@ public class StoriesListAdapter extends RecyclerView.Adapter<StoriesListAdapter.
         return super.getItemViewType(position);
     }
 
+    @Override
+    public Filter getFilter() {
+        Filter filter = new Filter() {
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+
+                mDisplayedValues = (ArrayList<UserObject>) results.values; // has the filtered values
+                notifyDataSetChanged();  // notifies the data with new filtered values
+            }
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
+                List<UserObject> FilteredArrList = new ArrayList<UserObject>();
+
+                if (userObjects == null) {
+                    userObjects = new ArrayList<UserObject>(mDisplayedValues); // saves the original data in mOriginalValues
+                }
+
+                /********
+                 *
+                 *  If constraint(CharSequence that is received) is null returns the mOriginalValues(Original) values
+                 *  else does the Filtering and returns FilteredArrList(Filtered)
+                 *
+                 ********/
+                if (constraint == null || constraint.length() == 0) {
+
+                    // set the Original result to return
+                    results.count = userObjects.size();
+                    results.values = userObjects;
+                } else {
+                    constraint = constraint.toString().toLowerCase();
+                    for (int i = 0; i < userObjects.size(); i++) {
+                        String data = userObjects.get(i).getUserName();
+                        if (data.toLowerCase().startsWith(constraint.toString())) {
+                            UserObject userObject = new UserObject();
+                            userObject.setFaved(userObjects.get(i).getFaved());
+                            userObject.setBitmap(userObjects.get(i).getBitmap());
+                            userObject.setImage(userObjects.get(i).getImage());
+                            userObject.setRealName(userObjects.get(i).getRealName());
+                            userObject.setUserName(userObjects.get(i).getUserName());
+                            userObject.setUserId(userObjects.get(i).getUserId());
+                            FilteredArrList.add(userObject
+                            );
+                        }
+                    }
+                    // set the Filtered result to return
+                    results.count = FilteredArrList.size();
+                    results.values = FilteredArrList;
+                }
+                return results;
+            }
+        };
+        return filter;
+    }
+
+
     public class StoriesListHolder extends RecyclerView.ViewHolder {
         private CircleImageView userIcon;
-        private RegularTextView userName;
+        private BoldTextView userName;
         private RegularTextView realName;
         private LinearLayout storyObject;
         private LottieAnimationView favourite;

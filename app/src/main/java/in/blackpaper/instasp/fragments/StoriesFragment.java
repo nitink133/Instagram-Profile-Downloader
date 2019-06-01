@@ -1,12 +1,18 @@
 package in.blackpaper.instasp.fragments;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.blackpaper.instasp.R;
+import in.blackpaper.instasp.activity.SearchActivity;
 import in.blackpaper.instasp.adapter.StoriesListAdapter;
 import in.blackpaper.instasp.models.UserObject;
 import in.blackpaper.instasp.utils.InstaUtils;
@@ -38,6 +45,7 @@ public class StoriesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
 
@@ -176,6 +184,30 @@ public class StoriesFragment extends Fragment {
             if (refreshLayout.isRefreshing())
                 refreshLayout.setRefreshing(false);
         }
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_search_icon, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.action_search:
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                intent.putParcelableArrayListExtra("userObjectList", (ArrayList<? extends Parcelable>) userObjectList);
+                startActivity(intent);
+
+                return true;
+            default:
+                break;
+        }
+
+        return false;
     }
 
     @Override

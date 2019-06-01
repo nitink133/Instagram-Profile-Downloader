@@ -16,6 +16,9 @@ import android.os.Looper;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -131,6 +134,8 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
             showLoading();
             new RequestInstagramAPI(ApiUtils.getUsernameUrl(username)).execute();
         }
+
+        changeFragment(new StoriesFragment());
 
 
     }
@@ -451,6 +456,9 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
     public void onPositiveButtonClicked(int i, @NotNull String s) {
         ToastUtils.SuccessToast(context, "Thanks for your feedback");
     }
+
+
+
 
 
     private class RequestInstagramAPI extends AsyncTask<Void, String, String> {
