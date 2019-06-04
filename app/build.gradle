@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "in.blackpaper.instasp"
+        applicationId "com.blackpaper.InstaDownload.stories.profile.post.download"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -118,5 +118,7 @@ dependencies {
     implementation 'com.afollestad.material-dialogs:input:3.0.0-rc1'
     implementation 'com.snatik:storage:2.1.0'
 
+
+    implementation 'org.jsoup:jsoup:1.10.2'
     implementation 'com.davidecirillo.multichoicerecyclerview:multichoicerecyclerview:2.3.0'
 }

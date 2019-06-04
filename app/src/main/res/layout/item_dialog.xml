@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="5dp">
 
-    <in.blackpaper.instasp.view.BoldTextView
+    <com.blackpaper.InstaDownload.stories.profile.post.download.view.BoldTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
@@ -14,7 +14,7 @@
         android:id="@+id/titleText"
         android:textSize="18sp" />
 
-    <in.blackpaper.instasp.view.RegularTextView
+    <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
         android:layout_width="match_parent"
         android:id="@+id/descriptionText"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <in.blackpaper.instasp.view.RegularButton
+        <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/yes"
@@ -40,7 +40,7 @@
             android:background="@drawable/ic_rectangle_theme"
             android:text="Yes" />
 
-        <in.blackpaper.instasp.view.RegularButton
+        <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularButton
             android:layout_width="wrap_content"
             android:id="@+id/no"
             android:layout_height="wrap_content"

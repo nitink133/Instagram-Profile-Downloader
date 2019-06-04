@@ -32,7 +32,7 @@
                     android:src="@drawable/ic_back_24px" />
 
 
-                <in.blackpaper.instasp.view.RegularEditText
+                <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularEditText
                     android:id="@+id/searchText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -74,7 +74,7 @@
                     app:lottie_loop="true"
                     app:lottie_fileName="lottie/no_data.json" />
 
-                <in.blackpaper.instasp.view.RegularTextView
+                <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

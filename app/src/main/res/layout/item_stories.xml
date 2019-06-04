@@ -19,7 +19,7 @@
         android:layout_weight="3"
         android:orientation="horizontal">
 
-        <in.blackpaper.instasp.view.RegularTextView
+        <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
             android:layout_width="0dp"
             android:layout_marginLeft="5dp"
             android:layout_height="match_parent"

@@ -39,7 +39,7 @@
                 android:layout_marginRight="?actionBarSize"
                 android:background="@android:color/transparent"
                 android:gravity="center_vertical"
-                android:text="Download Profile Picture"
+                android:text="Download Posts"
                 android:textColor="@color/black"
                 android:textColorHint="@color/notDescriptionTextColor"
                 android:textSize="18sp" />
@@ -69,23 +69,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Username -  "
+                android:text="Url -  "
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
             <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularEditText
-                android:id="@+id/username"
+                android:id="@+id/url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:background="@android:color/transparent"
                 android:gravity="center"
-                android:hint="enter username"
+                android:textColor="@color/black"
+                android:hint="enter url"
+                android:textColorHint="@color/normalColor"
                 android:singleLine="true" />
         </LinearLayout>
 
         <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularButton
-            android:id="@+id/search"
+            android:id="@+id/download"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -93,20 +95,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/ic_rectangle_theme"
-            android:text="Get"
+            android:text="Download"
             android:textColor="@color/white" />
 
-        <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularButton
-            android:id="@+id/openInstagram"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/ic_rectangle_theme"
-            android:text="Open Instagram"
-            android:textColor="@color/white" />
     </LinearLayout>
 
     <ProgressBar

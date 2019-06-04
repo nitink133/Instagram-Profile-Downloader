@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Instagram Downloader</string>
+    <string name="app_name">InstaDownload</string>
     <string name="insta_client_id">	35a16c292a454dc598c24fe3c7e1be60</string>
     <string name="insta_client_secret">3424a76b2451494ab44f9e3304f7cb16</string>
 

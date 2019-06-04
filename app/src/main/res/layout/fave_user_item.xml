@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_height="wrap_content">
-            <in.blackpaper.instasp.view.BoldTextView
+            <com.blackpaper.InstaDownload.stories.profile.post.download.view.BoldTextView
                 android:layout_height="wrap_content"
                 android:id="@+id/user_name"
                 android:padding="3dp"
@@ -43,10 +43,9 @@
                 android:textSize="16sp"
                 android:layout_width="wrap_content" />
 
-            <in.blackpaper.instasp.view.RegularTextView
+            <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:id="@+id/real_name"

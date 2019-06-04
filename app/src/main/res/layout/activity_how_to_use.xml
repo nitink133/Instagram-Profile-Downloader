@@ -29,7 +29,7 @@
                 android:src="@drawable/ic_back_24px" />
 
 
-            <in.blackpaper.instasp.view.RegularTextView
+            <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -45,7 +45,7 @@
 
     </FrameLayout>
 
-    <in.blackpaper.instasp.view.RegularTextView
+    <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
