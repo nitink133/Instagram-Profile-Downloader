@@ -11,17 +11,17 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerInParent="true"
-        android:contentDescription="TODO" android:src="@drawable/ic_launcher_background" />
+        android:src="@drawable/ic_launcher_background" />
 
     <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
+        android:id="@+id/splash_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="Instagram Downloader"
+        android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
-        android:id="@+id/splash_title"
-        android:textColor="@color/white"
-        android:layout_alignParentBottom="true"/>
+        android:text="Instagram Downloader"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
 
 </RelativeLayout>

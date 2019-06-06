@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.blackpaper.InstaDownload.stories.profile.post.download.utils.SquareLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.blackpaper.InstaDownload.stories.profile.post.download.utils.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/select_stories_overview_item"
     android:layout_width="match_parent"
-    android:visibility="gone"
     android:layout_height="match_parent"
     android:padding="2.5dp"
-    android:id="@+id/select_stories_overview_item">
+    android:visibility="gone"
+    tools:visibility="visible">
 
     <ImageView
+        android:id="@+id/overview_media_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
-        android:id="@+id/overview_media_holder"/>
+        android:background="@color/black" />
 
     <ImageView
+        android:id="@+id/overview_is_video"
         android:layout_width="20dp"
-        android:alpha="0.85"
         android:layout_height="20dp"
         android:layout_centerInParent="true"
         android:layout_margin="5dp"
-        android:visibility="gone"
+        android:alpha="0.85"
         android:src="@drawable/ic_videocam_black_24dp"
-        android:id="@+id/overview_is_video"/>
+        android:visibility="gone" />
+
+    <ImageButton
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:id="@+id/checked"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:background="@color/insta_background"
+        android:src="@drawable/ic_check_black_24dp" />
 
 </com.blackpaper.InstaDownload.stories.profile.post.download.utils.SquareLayout>

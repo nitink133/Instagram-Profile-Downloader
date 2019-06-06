@@ -81,7 +81,7 @@
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:hint="enter url"
+                android:hint="paste url"
                 android:textColorHint="@color/normalColor"
                 android:singleLine="true" />
         </LinearLayout>

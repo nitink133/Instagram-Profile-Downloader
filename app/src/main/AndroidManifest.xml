@@ -30,7 +30,7 @@
         <activity android:name=".activity.StoriesDownloadActivity" />
         <activity
             android:name=".activity.splash.SplashActivity"
-            android:theme="@style/Theme.Design.NoActionBar">
+            android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
