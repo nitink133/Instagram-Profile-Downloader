@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp" />
 
-    <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
+    <com.InstaDownload.stories.profile.post.download.view.RegularTextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         android:textSize="18sp"
         tools:text="Stop Loosing your stuff" />
 
-    <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
+    <com.InstaDownload.stories.profile.post.download.view.RegularTextView
         android:id="@+id/tv_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

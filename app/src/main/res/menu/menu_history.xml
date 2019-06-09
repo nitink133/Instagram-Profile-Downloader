@@ -5,4 +5,10 @@
         android:icon="@drawable/ic_history"
         android:title="Download History"
         app:showAsAction="always"/>
+
+
+    <item android:id="@+id/information"
+        android:icon="@drawable/ic_information"
+        android:title="How To Use"
+        app:showAsAction="always"/>
 </menu>

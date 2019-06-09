@@ -1,4 +1,4 @@
-package com.blackpaper.InstaDownload.stories.profile.post.download;
+package com.InstaDownload.stories.profile.post.download;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("in.blackpaper.instasp", appContext.getPackageName());
+        assertEquals("com.InstaDownload.stories.profile.post", appContext.getPackageName());
     }
 }

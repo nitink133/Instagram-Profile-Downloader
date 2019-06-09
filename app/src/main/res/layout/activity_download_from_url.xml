@@ -32,7 +32,7 @@
                 android:src="@drawable/ic_back_24px" />
 
 
-            <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
+            <com.InstaDownload.stories.profile.post.download.view.RegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -55,6 +55,7 @@
         android:layout_marginTop="?actionBarSize"
         android:orientation="vertical">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +66,10 @@
             android:padding="10dp">
 
 
-            <com.blackpaper.InstaDownload.stories.profile.post.download.view.BoldTextView
+
+
+
+            <com.InstaDownload.stories.profile.post.download.view.BoldTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -73,7 +77,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularEditText
+            <com.InstaDownload.stories.profile.post.download.view.RegularEditText
                 android:id="@+id/url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +90,7 @@
                 android:singleLine="true" />
         </LinearLayout>
 
-        <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularButton
+        <com.InstaDownload.stories.profile.post.download.view.RegularButton
             android:id="@+id/download"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,6 +101,16 @@
             android:background="@drawable/ic_rectangle_theme"
             android:text="Download"
             android:textColor="@color/white" />
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="@string/banner_home_footer" />
 
     </LinearLayout>
 

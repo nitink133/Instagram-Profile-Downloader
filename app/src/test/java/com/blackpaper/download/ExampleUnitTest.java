@@ -1,4 +1,4 @@
-package com.blackpaper.InstaDownload.stories.profile.post.download;
+package com.InstaDownload.stories.profile.post.download;
 
 import org.junit.Test;
 

@@ -34,6 +34,16 @@
 
     </FrameLayout>
 
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_home_footer" />
+
 
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/main_imageview"
@@ -59,23 +69,25 @@
             android:src="@drawable/ic_share" />
 
         <ImageButton
-            android:id="@+id/button_save"
+
+            android:id="@+id/repost"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/button_share"
             android:background="@drawable/round_button_border"
             android:padding="7dp"
-            android:src="@drawable/ic_download" />
+            android:src="@drawable/ic_repost" />
 
         <ImageButton
-            android:id="@+id/repost"
+
+            android:id="@+id/button_save"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/round_button_border"
             android:padding="7dp"
-            android:src="@drawable/ic_repost" />
+            android:src="@drawable/ic_download" />
 
 
         <ImageButton

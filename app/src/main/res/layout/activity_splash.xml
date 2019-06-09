@@ -4,24 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/ic_rectangle_theme">
 
     <ImageView
         android:id="@+id/spash_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_launcher_background" />
+        android:src="@mipmap/instadownloader_icon" />
 
-    <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
+    <com.InstaDownload.stories.profile.post.download.view.RegularTextView
         android:id="@+id/splash_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
-        android:text="Instagram Downloader"
-        android:textColor="@color/black"
+        android:text="InstaDownload"
+        android:textColor="@color/white"
         android:textSize="24sp" />
 
 </RelativeLayout>

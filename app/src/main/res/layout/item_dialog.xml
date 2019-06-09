@@ -5,18 +5,32 @@
     android:orientation="vertical"
     android:padding="5dp">
 
-    <com.blackpaper.InstaDownload.stories.profile.post.download.view.BoldTextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="Title"
-        android:textColor="@color/black"
-        android:id="@+id/titleText"
-        android:textSize="18sp" />
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
-        android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_delete" />
+
+        <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Title"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <com.InstaDownload.stories.profile.post.download.view.RegularTextView
         android:id="@+id/descriptionText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:padding="5dp"
@@ -26,27 +40,26 @@
 
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal">
 
 
-
-        <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularButton
-            android:layout_width="wrap_content"
+        <com.InstaDownload.stories.profile.post.download.view.RegularButton
             android:id="@+id/no"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:background="@drawable/ic_rectangle_theme"
             android:text="No" />
 
-        <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularButton
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_height="wrap_content"
+        <com.InstaDownload.stories.profile.post.download.view.RegularButton
             android:id="@+id/yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/ic_rectangle_theme"
             android:text="Yes" />
     </LinearLayout>

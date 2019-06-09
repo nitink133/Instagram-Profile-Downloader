@@ -18,7 +18,7 @@
        android:layout_width="match_parent"
        android:layout_marginTop="?actionBarSize"
        android:layout_height="match_parent">
-       <com.blackpaper.InstaDownload.stories.profile.post.download.view.BoldTextView
+       <com.InstaDownload.stories.profile.post.download.view.BoldTextView
            android:id="@+id/noDataText"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"

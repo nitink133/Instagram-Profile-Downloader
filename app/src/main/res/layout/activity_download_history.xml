@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
                 android:src="@drawable/ic_back_24px" />
 
 
-            <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
+            <com.InstaDownload.stories.profile.post.download.view.BoldTextView
                 android:layout_width="0dp"
                 android:layout_weight="3"
                 android:id="@+id/title"
@@ -59,9 +59,20 @@
             android:id="@+id/stories_overview_rv"
             android:layout_width="match_parent"
             android:layout_marginTop="?actionBarSize"
+            android:layout_marginBottom="100dp"
             android:layout_height="match_parent"
             android:background="@color/colorPrimary"
             android:overScrollMode="never" />
+
+        <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+            android:layout_width="wrap_content"
+            android:text="No Downloads Found"
+            android:id="@+id/no_downloads"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:id="@+id/no_net_overview_stories"
@@ -137,5 +148,16 @@
 
     </FrameLayout>
 
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/banner_home_footer"  />
 
-</FrameLayout>
+
+</RelativeLayout>

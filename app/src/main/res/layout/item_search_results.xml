@@ -33,4 +33,18 @@
         android:textStyle="bold"
         android:visibility="visible"
         tools:text="No Results Found!" />
+
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_home_footer" />
+
+
 </RelativeLayout>

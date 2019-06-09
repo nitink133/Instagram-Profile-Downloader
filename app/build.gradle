@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.blackpaper.InstaDownload.stories.profile.post.download"
+        applicationId "com.InstaDownload.stories.profile.post.download"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -107,7 +107,6 @@ dependencies {
     implementation 'com.github.skydoves:elasticviews:1.1.2'
     implementation 'com.stepstone.apprating:app-rating:2.3.1'
 
-    implementation 'com.github.charlieAndroidDev:Instagram4Android:0.2.7'
     implementation 'com.facebook.rebound:rebound:0.3.8'
 
     implementation 'com.karumi:dexter:4.2.0'
@@ -118,7 +117,13 @@ dependencies {
     implementation 'com.afollestad.material-dialogs:input:3.0.0-rc1'
     implementation 'com.snatik:storage:2.1.0'
 
-
+    implementation 'com.google.firebase:firebase-messaging:17.5.0'
     implementation 'org.jsoup:jsoup:1.10.2'
     implementation 'com.davidecirillo.multichoicerecyclerview:multichoicerecyclerview:2.3.0'
+
+
+    implementation 'com.google.android.gms:play-services-ads:17.2.1'
 }
+apply plugin: 'com.google.gms.google-services'
+
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

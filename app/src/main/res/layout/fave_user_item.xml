@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_height="wrap_content">
-            <com.blackpaper.InstaDownload.stories.profile.post.download.view.BoldTextView
+            <com.InstaDownload.stories.profile.post.download.view.BoldTextView
                 android:layout_height="wrap_content"
                 android:id="@+id/user_name"
                 android:padding="3dp"
@@ -43,7 +43,7 @@
                 android:textSize="16sp"
                 android:layout_width="wrap_content" />
 
-            <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
+            <com.InstaDownload.stories.profile.post.download.view.RegularTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -60,6 +60,8 @@
             android:layout_width="50dp"
             android:id="@+id/favourite"
             android:layout_height="50dp"
+            android:scaleX="2"
+            android:scaleY="2"
             android:layout_gravity="bottom|center"
             android:layout_marginBottom="10dp"
             app:lottie_fileName="lottie/favourite.json"/>

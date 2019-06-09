@@ -17,10 +17,10 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="blank_iv">Search IG username to display profile picture</string>
+    <string name="blank_iv">Search Instagtam username to display profile picture</string>
     <string name="no_profs">No profile pics saved yet</string>
     <string name="error_loading_instagram_log_in_page">Error loading Instagram Log in page</string>
-    <string name="no_ig_ers_favorited_yet">No IG\'ers favorited yet</string>
+    <string name="no_ig_ers_favorited_yet">No Favorite stories yet</string>
     <string name="user_icon">user_icon</string>
     <string name="log_out">Log out</string>
     <string name="logout">Log out</string>
@@ -42,6 +42,39 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- TODO - add your ad unit Ids -->
+    <!-- AdMob ad unit IDs -->
+    <string name="admob_app_id">ca-app-pub-7814549536543810~2265774028</string>
+    <string name="banner_home_footer">ca-app-pub-7814549536543810/9188784332</string>
+    <string name="interstitial_full_screen">ca-app-pub-7814549536543810/7126523936</string>
+    <string name="rewarded_video">ca-app-pub-XXXXXXXX~XXXXXXXXXXX</string>
+
+
+    <string name="download_profile_photo">1. Open the InstaDownload App.\n\n
+2. Go to Navigation bar. click on \"Download Profile Pic\"\n\n
+3. Enter username of the person you want to download profile photo of.\n\n
+4. Click on "Get" button.\n\n
+5. After that bottom right corner you will find 3 icons(Share, Download, Repost).\n\n
+6. Click on Download button to save the profile picture.\n\n
+7.Click on Repost button to repost on Instagram.\n\n
+8.Click on Share button to share on all the available platform.\n\n</string>
+
+
+    <string name="download_stories">1. Open InstaDownload App.\n\n
+2. Screen will open  conatining stories of people you follow or  you can also search any instagram user.\n\n
+3. After clicking on story. you will find all stories of that person.\n\n
+4. You can download, Repost and Share as well Bookmark your favorite stories.\n\n</string>
+
+
+    <string name="download_post">1. Open the Instagram app.\n\n
+2. Click three dots icon on the top right corner of the person\'s post. Once open click on \"Copy \" option.\n\n
+3. Now open InstaDownload App.\n\n
+Go to navigation bar. Click on \"Download Post\".\n\n
+4. Paste the copied URL in the past URL dialogue box.\n\n
+5. Click on \"Download\" button to save the post.\n\n</string>
+
 
 </resources>
 

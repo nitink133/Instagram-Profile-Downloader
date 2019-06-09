@@ -121,6 +121,7 @@
             <Button
                 android:id="@+id/errorReportButton"
                 android:layout_width="match_parent"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:text="@string/error_report_button_text" />
 

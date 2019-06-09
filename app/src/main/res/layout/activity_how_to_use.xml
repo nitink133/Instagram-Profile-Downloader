@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,49 +9,123 @@
     tools:context=".activity.HowToUseActivity">
 
 
-    <FrameLayout
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <FrameLayout
+               android:layout_width="match_parent"
+               android:layout_height="?actionBarSize"
+               android:elevation="2dp">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="?actionBarSize"
+                   android:background="@color/colorPrimary"
+                   android:orientation="horizontal">
+
+                   <ImageButton
+                       android:id="@+id/back"
+                       android:layout_width="?actionBarSize"
+                       android:layout_height="?actionBarSize"
+                       android:layout_gravity="center_vertical"
+                       android:background="@android:color/transparent"
+                       android:contentDescription="TODO"
+                       android:src="@drawable/ic_back_24px" />
+
+
+                   <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:layout_gravity="center"
+                       android:layout_marginRight="?actionBarSize"
+                       android:background="@android:color/transparent"
+                       android:gravity="center_vertical"
+                       android:text="How to use"
+                       android:textColor="@color/black"
+                       android:textColorHint="@color/notDescriptionTextColor"
+                       android:textSize="18sp" />
+               </LinearLayout>
+
+
+           </FrameLayout>
+
+           <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="15dp"
+               android:text="How to Download Profile Photo?"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:textColor="@color/black"
+               android:textSize="18sp" />
+
+           <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="5dp"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:text="@string/download_profile_photo"
+               android:textColor="@color/black"
+               android:textSize="18sp" />
+
+           <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="15dp"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:text="How to Download Stories?"
+               android:textColor="@color/black"
+               android:textSize="18sp" />
+
+           <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="5dp"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:text="@string/download_stories"
+               android:textColor="@color/black"
+               android:textSize="18sp" />
+
+           <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:layout_margin="15dp"
+               android:text="How to Download post on InstaDownload?"
+               android:textColor="@color/black"
+               android:textSize="18sp" />
+
+           <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="5dp"
+               android:layout_marginLeft="10dp"
+               android:layout_marginRight="10dp"
+               android:text="@string/download_post"
+               android:textColor="@color/black"
+               android:textSize="18sp" />
+       </LinearLayout>
+   </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:elevation="2dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/back"
-                android:layout_width="?actionBarSize"
-                android:layout_height="?actionBarSize"
-                android:layout_gravity="center_vertical"
-                android:background="@android:color/transparent"
-                android:contentDescription="TODO"
-                android:src="@drawable/ic_back_24px" />
-
-
-            <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginRight="?actionBarSize"
-                android:background="@android:color/transparent"
-                android:gravity="center_vertical"
-                android:text="How to use"
-                android:textColor="@color/black"
-                android:textColorHint="@color/notDescriptionTextColor"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-
-    </FrameLayout>
-
-    <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
-        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="1. Login with Instagram account. The website you will in is Instagram official website.We don't get your password anyway\n\n2. Find and click the video or photo. \n\n3. Click on download button."
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:layout_gravity="bottom"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_home_footer" />
 
-</LinearLayout>
+
+
+</FrameLayout>

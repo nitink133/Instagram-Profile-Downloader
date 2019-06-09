@@ -32,17 +32,35 @@
                 android:src="@drawable/ic_back_24px" />
 
 
-            <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginRight="?actionBarSize"
                 android:background="@android:color/transparent"
                 android:gravity="center_vertical"
-                android:text="Download Profile Picture"
+                android:text="Download Profile Pic"
                 android:textColor="@color/black"
                 android:textColorHint="@color/notDescriptionTextColor"
                 android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/history"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_history" />
+
+            <ImageView
+                android:id="@+id/information"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:scaleY=".9"
+                android:layout_marginLeft="10dp"
+                android:scaleX=".9"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_information" />
         </LinearLayout>
 
 
@@ -55,6 +73,9 @@
         android:layout_marginTop="?actionBarSize"
         android:orientation="vertical">
 
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +86,7 @@
             android:padding="10dp">
 
 
-            <com.blackpaper.InstaDownload.stories.profile.post.download.view.BoldTextView
+            <com.InstaDownload.stories.profile.post.download.view.BoldTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -73,7 +94,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularEditText
+            <com.InstaDownload.stories.profile.post.download.view.RegularEditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,7 +105,7 @@
                 android:singleLine="true" />
         </LinearLayout>
 
-        <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularButton
+        <com.InstaDownload.stories.profile.post.download.view.BoldButton
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,17 +117,31 @@
             android:text="Get"
             android:textColor="@color/white" />
 
-        <com.blackpaper.InstaDownload.stories.profile.post.download.view.RegularButton
+        <com.InstaDownload.stories.profile.post.download.view.BoldButton
             android:id="@+id/openInstagram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textStyle="bold"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/ic_rectangle_theme"
             android:text="Open Instagram"
             android:textColor="@color/white" />
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="@string/banner_home_footer" />
+
+
     </LinearLayout>
 
     <ProgressBar
