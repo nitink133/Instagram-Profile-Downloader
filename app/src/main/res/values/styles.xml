@@ -11,10 +11,6 @@
         <item name="alertDialogTheme">@style/MyAlertDialogStyle</item>
         <item name="alertDialogStyle">@style/MyAlertDialogStyle</item>
         <!-- Assign custom text styles for title, description, comment -->
-        <item name="appRatingDialogTitleStyle">@style/MyDialogTitleStyle</item>
-        <item name="appRatingDialogDescriptionStyle">@style/MyDialogDescriptionStyle</item>
-        <item name="appRatingDialogNoteDescriptionStyle">@style/MyDialogNoteDescriptionStyle</item>
-        <item name="appRatingDialogCommentStyle">@style/MyDialogCommentStyle</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -60,7 +56,6 @@
 
     <style name="MyAlertDialogButtonStyle" parent="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog">
         <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textSize">@dimen/text_size_small</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 

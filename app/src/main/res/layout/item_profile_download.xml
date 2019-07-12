@@ -10,7 +10,7 @@
         android:contentDescription="TODO" android:src="@drawable/ic_launcher_background"
         android:layout_height="wrap_content" />
 
-    <com.InstaDownload.stories.profile.post.download.view.RegularButton
+    <com.storyPost.PhotoVideoDownloader.view.RegularButton
         android:layout_width="match_parent"
         android:text="SAVE"
         android:background="@color/colorPrimaryDark"

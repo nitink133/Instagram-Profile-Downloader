@@ -66,17 +66,22 @@
             app:uvv_scalable="false" />
 
     </FrameLayout>
-    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
+
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="50dp"
-        android:background="@color/white"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_home_footer" />
+        android:layout_height="wrap_content">
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_marginTop="50dp"
+            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_home_footer" />
 
-
+    </FrameLayout>
     <com.github.chrisbanes.photoview.PhotoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

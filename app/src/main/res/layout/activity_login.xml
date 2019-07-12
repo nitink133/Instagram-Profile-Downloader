@@ -39,7 +39,7 @@
                    android:background="@drawable/ic_border"
                    android:orientation="vertical">
 
-                   <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+                   <com.storyPost.PhotoVideoDownloader.view.BoldTextView
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:textSize="18sp"
@@ -47,7 +47,7 @@
                        android:gravity="center_horizontal"
                        android:text="Username -  " />
 
-                   <com.InstaDownload.stories.profile.post.download.view.RegularEditText
+                   <com.storyPost.PhotoVideoDownloader.view.RegularEditText
                        android:id="@+id/username"
                        android:layout_width="match_parent"
                        android:layout_marginTop="15dp"
@@ -66,7 +66,7 @@
                    android:background="@drawable/ic_border"
                    android:orientation="vertical">
 
-                   <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+                   <com.storyPost.PhotoVideoDownloader.view.BoldTextView
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:textSize="18sp"
@@ -74,7 +74,7 @@
                        android:gravity="center_horizontal"
                        android:text="Password -  " />
 
-                   <com.InstaDownload.stories.profile.post.download.view.RegularEditText
+                   <com.storyPost.PhotoVideoDownloader.view.RegularEditText
                        android:id="@+id/password"
                        android:layout_width="match_parent"
                        android:layout_marginTop="15dp"
@@ -113,7 +113,7 @@
 
                </LinearLayout>
 
-               <com.InstaDownload.stories.profile.post.download.view.RegularButton
+               <com.storyPost.PhotoVideoDownloader.view.RegularButton
                    android:id="@+id/login"
                    android:layout_width="150dp"
                    android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
 
     </LinearLayout>
 
-    <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+    <com.storyPost.PhotoVideoDownloader.view.RegularTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

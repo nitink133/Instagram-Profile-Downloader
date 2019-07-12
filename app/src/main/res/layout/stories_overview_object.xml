@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.InstaDownload.stories.profile.post.download.utils.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.storyPost.PhotoVideoDownloader.utils.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/select_stories_overview_item"
     android:layout_width="match_parent"
@@ -33,6 +33,6 @@
         android:visibility="gone"
         android:layout_marginTop="10dp"
         android:background="@color/insta_background"
-        android:src="@drawable/ic_check_black_24dp" />
+        android:src="@drawable/ic_check_black" />
 
-</com.InstaDownload.stories.profile.post.download.utils.SquareLayout>
+</com.storyPost.PhotoVideoDownloader.utils.SquareLayout>

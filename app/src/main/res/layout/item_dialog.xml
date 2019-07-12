@@ -17,7 +17,7 @@
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_delete" />
 
-        <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+        <com.storyPost.PhotoVideoDownloader.view.BoldTextView
             android:id="@+id/titleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
 
     </LinearLayout>
 
-    <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+    <com.storyPost.PhotoVideoDownloader.view.RegularTextView
         android:id="@+id/descriptionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
         android:orientation="horizontal">
 
 
-        <com.InstaDownload.stories.profile.post.download.view.RegularButton
+        <com.storyPost.PhotoVideoDownloader.view.RegularButton
             android:id="@+id/no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
             android:background="@drawable/ic_rectangle_theme"
             android:text="No" />
 
-        <com.InstaDownload.stories.profile.post.download.view.RegularButton
+        <com.storyPost.PhotoVideoDownloader.view.RegularButton
             android:id="@+id/yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

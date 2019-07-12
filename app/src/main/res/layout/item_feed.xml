@@ -36,7 +36,7 @@
                   android:src="@drawable/ic_launcher_background"
                   android:layout_height="?actionBarSize" />
 
-              <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+              <com.storyPost.PhotoVideoDownloader.view.RegularTextView
                   android:id="@+id/username"
                   android:layout_width="match_parent"
                   android:text="Username"
@@ -134,7 +134,7 @@
       </LinearLayout>
 
 
-      <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+      <com.storyPost.PhotoVideoDownloader.view.RegularTextView
           android:id="@+id/caption"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"

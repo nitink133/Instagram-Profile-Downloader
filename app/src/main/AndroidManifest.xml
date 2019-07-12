@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.InstaDownload.stories.profile.post.download">
+    package="com.storyPost.PhotoVideoDownloader">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -8,29 +8,24 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".AppController"
+        android:name="com.storyPost.PhotoVideoDownloader.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/instadownloader_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/instadownloader_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.InterstitialAdActivity"></activity>
-        <activity android:name=".activity.DownloadFromUrlActivity" />
-        <activity android:name=".activity.SearchActivity" />
-        <activity android:name=".activity.InstagramOfficalLoginActivity" />
-        <activity android:name=".activity.HowToUseActivity" />
-        <activity android:name=".activity.DownloadProfileImageActivity" />
-        <activity android:name=".activity.ViewStoryActivity" />
-        <activity android:name=".activity.ViewProfileActivity" />
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.DownloadHistoryActivity" />
+        <activity android:name="com.storyPost.PhotoVideoDownloader.activity.InterstitialAdActivity"></activity>
+        <activity android:name="com.storyPost.PhotoVideoDownloader.activity.DownloadFromUrlActivity" />
+        <activity android:name="com.storyPost.PhotoVideoDownloader.activity.SearchActivity" />
+        <activity android:name="com.storyPost.PhotoVideoDownloader.activity.InstagramOfficalLoginActivity" />
+        <activity android:name="com.storyPost.PhotoVideoDownloader.activity.HowToUseActivity" />
+        <activity android:name="com.storyPost.PhotoVideoDownloader.activity.DownloadProfileImageActivity" />
+        <activity android:name="com.storyPost.PhotoVideoDownloader.activity.ViewStoryActivity" />
+        <activity android:name="com.storyPost.PhotoVideoDownloader.activity.ViewProfileActivity" />
+        <activity android:name="com.storyPost.PhotoVideoDownloader.activity.DownloadHistoryActivity" />
         <activity
-            android:name=".activity.ProfilepPictureActivity"
-            android:theme="@style/Theme.Design.NoActionBar" />
-        <activity android:name=".activity.StoriesDownloadActivity" />
-        <activity
-            android:name=".activity.splash.SplashActivity"
+            android:name="com.storyPost.PhotoVideoDownloader.activity.splash.SplashActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,15 +34,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.introscreen.IntroScreenActivity"
+            android:name="com.storyPost.PhotoVideoDownloader.activity.introscreen.IntroScreenActivity"
             android:theme="@style/Theme.Design.NoActionBar" />
         <activity
-            android:name=".activity.dashboard.MainActivity"
+            android:name="com.storyPost.PhotoVideoDownloader.activity.dashboard.MainActivity"
             android:theme="@style/Theme.Design.NoActionBar" />
-        <activity android:name=".helper.report.ErrorActivity" />
+        <activity android:name="com.storyPost.PhotoVideoDownloader.helper.report.ErrorActivity" />
 
         <service
-            android:name=".firebase.MyFirebaseMessagingService"
+            android:name="com.storyPost.PhotoVideoDownloader.firebase.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

@@ -1,4 +1,4 @@
-package com.InstaDownload.stories.profile.post.download;
+package com.storyPost.PhotoVideoDownloader;
 
 import org.junit.Test;
 

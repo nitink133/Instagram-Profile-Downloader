@@ -11,6 +11,9 @@
 
    <androidx.core.widget.NestedScrollView
        android:layout_width="match_parent"
+       android:id="@+id/nestedScrollView"
+
+       android:layout_marginBottom="100dp"
        android:layout_height="match_parent">
        <LinearLayout
            android:orientation="vertical"
@@ -37,7 +40,7 @@
                        android:src="@drawable/ic_back_24px" />
 
 
-                   <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+                   <com.storyPost.PhotoVideoDownloader.view.RegularTextView
                        android:layout_width="match_parent"
                        android:layout_height="match_parent"
                        android:layout_gravity="center"
@@ -53,7 +56,7 @@
 
            </FrameLayout>
 
-           <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+           <com.storyPost.PhotoVideoDownloader.view.BoldTextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_margin="15dp"
@@ -63,7 +66,7 @@
                android:textColor="@color/black"
                android:textSize="18sp" />
 
-           <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+           <com.storyPost.PhotoVideoDownloader.view.RegularTextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginTop="5dp"
@@ -73,7 +76,7 @@
                android:textColor="@color/black"
                android:textSize="18sp" />
 
-           <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+           <com.storyPost.PhotoVideoDownloader.view.BoldTextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_margin="15dp"
@@ -83,7 +86,7 @@
                android:textColor="@color/black"
                android:textSize="18sp" />
 
-           <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+           <com.storyPost.PhotoVideoDownloader.view.RegularTextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginTop="5dp"
@@ -93,17 +96,17 @@
                android:textColor="@color/black"
                android:textSize="18sp" />
 
-           <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+           <com.storyPost.PhotoVideoDownloader.view.BoldTextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginLeft="10dp"
                android:layout_marginRight="10dp"
                android:layout_margin="15dp"
-               android:text="How to Download post on InstaDownload?"
+               android:text="How to Download post on InstaSP?"
                android:textColor="@color/black"
                android:textSize="18sp" />
 
-           <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+           <com.storyPost.PhotoVideoDownloader.view.RegularTextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_marginTop="5dp"
@@ -123,7 +126,7 @@
         android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        ads:adSize="BANNER"
+        ads:adSize="SMART_BANNER"
         ads:adUnitId="@string/banner_home_footer" />
 
 

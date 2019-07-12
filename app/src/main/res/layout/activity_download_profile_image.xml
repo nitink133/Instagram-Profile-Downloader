@@ -32,10 +32,11 @@
                 android:src="@drawable/ic_back_24px" />
 
 
-            <com.InstaDownload.stories.profile.post.download.view.RegularTextView
-                android:layout_width="200dp"
+            <com.storyPost.PhotoVideoDownloader.view.RegularTextView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:layout_marginRight="?actionBarSize"
                 android:background="@android:color/transparent"
                 android:gravity="center_vertical"
@@ -57,6 +58,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:scaleY=".9"
+                android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:scaleX=".9"
                 android:layout_gravity="center_vertical"
@@ -86,7 +88,7 @@
             android:padding="10dp">
 
 
-            <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+            <com.storyPost.PhotoVideoDownloader.view.BoldTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -94,7 +96,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <com.InstaDownload.stories.profile.post.download.view.RegularEditText
+            <com.storyPost.PhotoVideoDownloader.view.RegularEditText
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,7 +107,7 @@
                 android:singleLine="true" />
         </LinearLayout>
 
-        <com.InstaDownload.stories.profile.post.download.view.BoldButton
+        <com.storyPost.PhotoVideoDownloader.view.BoldButton
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -117,7 +119,7 @@
             android:text="Get"
             android:textColor="@color/white" />
 
-        <com.InstaDownload.stories.profile.post.download.view.BoldButton
+        <com.storyPost.PhotoVideoDownloader.view.BoldButton
             android:id="@+id/openInstagram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

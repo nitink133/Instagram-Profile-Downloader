@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InstaDownload</string>
+    <string name="app_name">InstaSP</string>
     <string name="insta_client_id">	35a16c292a454dc598c24fe3c7e1be60</string>
     <string name="insta_client_secret">3424a76b2451494ab44f9e3304f7cb16</string>
 
@@ -46,13 +46,13 @@
 
     <!-- TODO - add your ad unit Ids -->
     <!-- AdMob ad unit IDs -->
-    <string name="admob_app_id">ca-app-pub-7814549536543810~2265774028</string>
-    <string name="banner_home_footer">ca-app-pub-7814549536543810/9188784332</string>
-    <string name="interstitial_full_screen">ca-app-pub-7814549536543810/7126523936</string>
+    <string name="admob_app_id">ca-app-pub-7814549536543810~8375934539</string>
+    <string name="banner_home_footer">ca-app-pub-7814549536543810/3123607855</string>
+    <string name="interstitial_full_screen">ca-app-pub-7814549536543810/9305872827</string>
     <string name="rewarded_video">ca-app-pub-XXXXXXXX~XXXXXXXXXXX</string>
 
 
-    <string name="download_profile_photo">1. Open the InstaDownload App.\n\n
+    <string name="download_profile_photo">1. Open the InstaSP App.\n\n
 2. Go to Navigation bar. click on \"Download Profile Pic\"\n\n
 3. Enter username of the person you want to download profile photo of.\n\n
 4. Click on "Get" button.\n\n
@@ -62,7 +62,7 @@
 8.Click on Share button to share on all the available platform.\n\n</string>
 
 
-    <string name="download_stories">1. Open InstaDownload App.\n\n
+    <string name="download_stories">1. Open InstaSP App.\n\n
 2. Screen will open  conatining stories of people you follow or  you can also search any instagram user.\n\n
 3. After clicking on story. you will find all stories of that person.\n\n
 4. You can download, Repost and Share as well Bookmark your favorite stories.\n\n</string>
@@ -70,7 +70,7 @@
 
     <string name="download_post">1. Open the Instagram app.\n\n
 2. Click three dots icon on the top right corner of the person\'s post. Once open click on \"Copy \" option.\n\n
-3. Now open InstaDownload App.\n\n
+3. Now open InstaSP App.\n\n
 Go to navigation bar. Click on \"Download Post\".\n\n
 4. Paste the copied URL in the past URL dialogue box.\n\n
 5. Click on \"Download\" button to save the post.\n\n</string>

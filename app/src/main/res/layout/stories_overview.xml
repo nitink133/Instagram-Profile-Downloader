@@ -131,6 +131,6 @@
         android:layout_height="80dp"
         android:layout_gravity="bottom"
         android:background="@color/white"
-        ads:adSize="BANNER"
+        ads:adSize="SMART_BANNER"
         ads:adUnitId="@string/banner_home_footer" />
 </LinearLayout>

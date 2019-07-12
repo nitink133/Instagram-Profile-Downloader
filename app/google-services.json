@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "744143791310",
-    "firebase_url": "https://instadownloader-41ca6.firebaseio.com",
-    "project_id": "instadownloader-41ca6",
-    "storage_bucket": "instadownloader-41ca6.appspot.com"
+    "project_number": "751156611289",
+    "firebase_url": "https://storygrabber-837be.firebaseio.com",
+    "project_id": "storygrabber-837be",
+    "storage_bucket": "storygrabber-837be.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:744143791310:android:dabe8c9ac00935f1",
+        "mobilesdk_app_id": "1:751156611289:android:e90b7061d4e1387a",
         "android_client_info": {
-          "package_name": "com.InstaDownload.stories.profile.post.download"
+          "package_name": "com.storyPost.PhotoVideoDownloader"
         }
       },
       "oauth_client": [
         {
-          "client_id": "744143791310-i8u1jupin2nou3v881udei9hrsloi94c.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.InstaDownload.stories.profile.post.download",
-            "certificate_hash": "d9f151039cac179d3f1d6e17f54a5d7b9eacd5da"
-          }
-        },
-        {
-          "client_id": "744143791310-7k5jii8i16ks56rct0f5ooh60i7nqcem.apps.googleusercontent.com",
+          "client_id": "751156611289-5uqnfm8p57kv8scggk027rdfftl7a8pt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAyX3mkH9wpbD-3qRHxvU8Hz_nHoEcUhNs"
+          "current_key": "AIzaSyDs1AmA5F6vJ1Ox-ImAKyd0hsFlmC8j458"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "744143791310-7k5jii8i16ks56rct0f5ooh60i7nqcem.apps.googleusercontent.com",
+              "client_id": "751156611289-5uqnfm8p57kv8scggk027rdfftl7a8pt.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

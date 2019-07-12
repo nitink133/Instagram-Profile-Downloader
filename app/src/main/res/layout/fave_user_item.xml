@@ -34,7 +34,7 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_height="wrap_content">
-            <com.InstaDownload.stories.profile.post.download.view.BoldTextView
+            <com.storyPost.PhotoVideoDownloader.view.BoldTextView
                 android:layout_height="wrap_content"
                 android:id="@+id/user_name"
                 android:padding="3dp"
@@ -43,7 +43,7 @@
                 android:textSize="16sp"
                 android:layout_width="wrap_content" />
 
-            <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+            <com.storyPost.PhotoVideoDownloader.view.RegularTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"

@@ -13,14 +13,14 @@
         android:layout_centerInParent="true"
         android:src="@mipmap/instadownloader_icon" />
 
-    <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+    <com.storyPost.PhotoVideoDownloader.view.RegularTextView
         android:id="@+id/splash_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
-        android:text="InstaDownload"
+        android:text="InstaSP"
         android:textColor="@color/white"
         android:textSize="24sp" />
 

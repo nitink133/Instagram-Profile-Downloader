@@ -1,4 +1,4 @@
-package com.InstaDownload.stories.profile.post.download;
+package com.storyPost.PhotoVideoDownloader;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.InstaDownload.stories.profile.post", appContext.getPackageName());
+        assertEquals("com.storyPost.PhotoVideoDownloader", appContext.getPackageName());
     }
 }

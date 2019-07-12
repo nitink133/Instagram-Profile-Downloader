@@ -32,7 +32,7 @@
             android:layout_weight="4"
             android:orientation="vertical">
 
-            <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+            <com.storyPost.PhotoVideoDownloader.view.RegularTextView
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
                 android:text="@string/nav_header_title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-            <com.InstaDownload.stories.profile.post.download.view.RegularTextView
+            <com.storyPost.PhotoVideoDownloader.view.RegularTextView
 
                 android:id="@+id/userEmail"
                 android:textColor="@color/black"

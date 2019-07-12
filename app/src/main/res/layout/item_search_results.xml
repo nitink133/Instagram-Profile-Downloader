@@ -43,7 +43,7 @@
         android:layout_alignParentBottom="true"
         android:layout_height="80dp"
         android:layout_gravity="bottom"
-        ads:adSize="BANNER"
+        ads:adSize="SMART_BANNER"
         ads:adUnitId="@string/banner_home_footer" />
 
 
