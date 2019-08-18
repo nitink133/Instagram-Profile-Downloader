@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.storyPost.PhotoVideoDownloader.utils.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/select_stories_overview_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2.5dp"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ad_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_horizontal_margin">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:orientation="vertical"
+           android:layout_height="match_parent">
+           <ImageView
+               android:layout_width="match_parent"
+               android:id="@+id/image"
+               android:src="@mipmap/ic_launcher"
+               android:layout_height="wrap_content"
+               android:layout_weight="3"/>
+
+           <com.storyPost.PhotoVideoDownloader.view.RegularTextView
+               android:layout_width="match_parent"
+               android:text="This is sample ad body"
+               android:layout_weight=".5"
+               android:textSize="18sp"
+               android:textColor="@color/black"
+               android:id="@+id/headline"
+               android:layout_height="wrap_content" />
+           <com.storyPost.PhotoVideoDownloader.view.RegularTextView
+               android:layout_width="match_parent"
+               android:layout_marginTop="5dp"
+               android:textSize="16sp"
+               android:layout_weight=".5"
+               android:textColor="@color/black"
+               android:text="This is sample ad body"
+               android:id="@+id/body"
+               android:layout_height="wrap_content" />
+
+           <com.storyPost.PhotoVideoDownloader.view.RegularButton
+               android:layout_width="match_parent"
+               android:text="View Ad"
+               android:background="@color/insta_background"
+               android:layout_marginTop="5dp"
+               android:textColor="@color/white"
+               android:id="@+id/viewAdd"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</com.storyPost.PhotoVideoDownloader.utils.SquareLayout>

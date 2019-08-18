@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/profileImage"
+        android:contentDescription="TODO" android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="horizontal">
+
+        <com.storyPost.PhotoVideoDownloader.view.RegularTextView
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:id="@+id/username"
+            android:text="n.i.t.i.n_k.h.a.n.n.a"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="30dp"
+            android:id="@+id/favourite"
+            android:layout_height="30dp"
+            app:lottie_autoPlay="true"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="10dp"
+            app:lottie_fileName="lottie/favourite.json"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
+    android:layout_width="wrap_content"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/overview_username"
+        android:paddingTop="10dp"
+        android:textStyle="bold"
+        android:paddingBottom="10dp"
+        android:gravity="center"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:id="@+id/fave_user_button"
+        android:background="@android:color/transparent"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/overview_username"
+        android:id="@+id/overview_image"/>
+
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/loading_overview_image"
+        android:layout_above="@id/overview_button"
+        android:indeterminate="true"
+        style="?android:progressBarStyleHorizontal"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:textColor="@color/colorAccent"
+        android:text="VIEW PROFILE"
+        android:layout_below="@+id/overview_image"
+        android:id="@+id/overview_button"/>
+
+
+</RelativeLayout>

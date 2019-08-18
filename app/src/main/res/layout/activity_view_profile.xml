@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/black">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:elevation="2dp">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_back_white" />
+
+
+        <ImageButton
+            android:id="@+id/download_history"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"
+            android:layout_gravity="center_vertical|end"
+            android:background="@android:color/transparent"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_history_white" />
+
+
+    </FrameLayout>
+
+
+       <LinearLayout
+           android:id="@+id/adContainer"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:layout_marginTop="50dp"
+           android:orientation="vertical"/>
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/main_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <LinearLayout
+        android:id="@+id/button_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:padding="20dp">
+
+        <ImageButton
+            android:id="@+id/button_share"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/round_button_border"
+            android:padding="7dp"
+            android:src="@drawable/ic_share" />
+
+        <ImageButton
+
+            android:id="@+id/repost"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/button_share"
+            android:background="@drawable/round_button_border"
+            android:padding="7dp"
+            android:src="@drawable/ic_repost" />
+
+        <ImageButton
+
+            android:id="@+id/button_save"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/round_button_border"
+            android:padding="7dp"
+            android:src="@drawable/ic_download" />
+
+
+        <ImageButton
+            android:id="@+id/button_delete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/button_share"
+            android:background="@drawable/round_button_border"
+            android:padding="7dp"
+            android:src="@drawable/ic_delete"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</RelativeLayout>

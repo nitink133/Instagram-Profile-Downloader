@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="5dp"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:orientation="vertical"
+     android:layout_height="wrap_content">
+     <com.storyPost.PhotoVideoDownloader.view.RegularTextView
+         android:layout_width="match_parent"
+         android:textSize="18sp"
+         android:text="vfvdfvndfvjdf"
+         android:textColor="@color/black"
+         android:padding="10dp"
+         android:layout_gravity="center"
+         android:gravity="center"
+         android:id="@+id/text"
+         android:layout_height="wrap_content" />
+
+     <com.storyPost.PhotoVideoDownloader.view.RegularButton
+         android:layout_width="200dp"
+         android:text="Rate Us"
+         android:textSize="14sp"
+         android:id="@+id/rateus"
+         android:layout_gravity="center"
+         android:layout_marginTop="10dp"
+         android:background="@color/insta_background"
+         android:textColor="@color/white"
+         android:layout_height="40dp" />
+
+     <com.storyPost.PhotoVideoDownloader.view.RegularButton
+         android:layout_width="200dp"
+         android:text="Remind me later"
+         android:textSize="14sp"
+         android:layout_gravity="center"
+         android:layout_marginTop="10dp"
+         android:id="@+id/remindlater"
+         android:background="@color/insta_background"
+         android:textColor="@color/white"
+         android:layout_height="40dp" />
+     <com.storyPost.PhotoVideoDownloader.view.RegularButton
+         android:layout_width="200dp"
+         android:text="No, thanks"
+         android:textSize="14sp"
+         android:id="@+id/never"
+         android:layout_marginBottom="10dp"
+         android:layout_gravity="center"
+         android:layout_marginTop="10dp"
+         android:background="@color/insta_background"
+         android:textColor="@color/white"
+         android:layout_height="40dp" />
+ </LinearLayout>
+</androidx.cardview.widget.CardView>

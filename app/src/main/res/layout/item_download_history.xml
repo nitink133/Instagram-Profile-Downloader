@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.storyPost.PhotoVideoDownloader.utils.SquareLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2.5dp"
+    android:id="@+id/select_stories_overview_item">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:id="@+id/overview_media_holder"/>
+
+    <ImageView
+        android:id="@+id/tick_image"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/ticked_image"
+        android:src="@drawable/ic_check_white_24dp"
+        android:visibility="invisible"/>
+
+
+    <ImageView
+        android:layout_width="20dp"
+        android:alpha="0.85"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        android:src="@drawable/ic_videocam_black_24dp"
+        android:id="@+id/overview_is_video"/>
+
+</com.storyPost.PhotoVideoDownloader.utils.SquareLayout>

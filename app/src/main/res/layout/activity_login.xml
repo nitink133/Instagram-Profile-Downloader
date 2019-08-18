@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/sign_in_logo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_instagram" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/sign_in_logo"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+       <androidx.core.widget.NestedScrollView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:orientation="vertical"
+               android:layout_gravity="center"
+               android:layout_height="wrap_content">
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:padding="10dp"
+                   android:background="@drawable/ic_border"
+                   android:orientation="vertical">
+
+                   <com.storyPost.PhotoVideoDownloader.view.BoldTextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textSize="18sp"
+                       android:textColor="@color/black"
+                       android:gravity="center_horizontal"
+                       android:text="Username -  " />
+
+                   <com.storyPost.PhotoVideoDownloader.view.RegularEditText
+                       android:id="@+id/username"
+                       android:layout_width="match_parent"
+                       android:layout_marginTop="15dp"
+                       android:singleLine="true"
+                       android:background="@android:color/transparent"
+                       android:layout_height="wrap_content"
+                       android:gravity="center"
+                       android:hint="enter your username"/>
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="10dp"
+                   android:padding="10dp"
+                   android:background="@drawable/ic_border"
+                   android:orientation="vertical">
+
+                   <com.storyPost.PhotoVideoDownloader.view.BoldTextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textSize="18sp"
+                       android:textColor="@color/black"
+                       android:gravity="center_horizontal"
+                       android:text="Password -  " />
+
+                   <com.storyPost.PhotoVideoDownloader.view.RegularEditText
+                       android:id="@+id/password"
+                       android:layout_width="match_parent"
+                       android:layout_marginTop="15dp"
+                       android:inputType="textPassword"
+                       android:singleLine="true"
+                       android:background="@android:color/transparent"
+                       android:layout_height="wrap_content"
+                       android:gravity="center"
+                       android:hint="enter your password"/>
+               </LinearLayout>
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="20dp"
+                   android:orientation="horizontal">
+
+                   <CheckBox
+                       android:id="@+id/accept_terms"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content" />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="By loging in, you agree to our "
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/terms_of_use"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Privacy policy"
+                       android:textColor="#ff0000"
+                       android:textStyle="bold" />
+
+               </LinearLayout>
+
+               <com.storyPost.PhotoVideoDownloader.view.RegularButton
+                   android:id="@+id/login"
+                   android:layout_width="150dp"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="20dp"
+                   android:layout_gravity="center"
+                   android:background="@drawable/ic_rectangle_theme"
+                   android:text="Log in"
+                   android:textColor="@color/colorPrimary" />
+
+           </LinearLayout>
+
+       </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+    <com.storyPost.PhotoVideoDownloader.view.RegularTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="Login with Instagram account"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp" />
+
+</RelativeLayout>

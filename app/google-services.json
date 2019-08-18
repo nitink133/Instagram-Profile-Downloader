@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "751156611289",
+    "firebase_url": "https://storygrabber-837be.firebaseio.com",
+    "project_id": "storygrabber-837be",
+    "storage_bucket": "storygrabber-837be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751156611289:android:e90b7061d4e1387a",
+        "android_client_info": {
+          "package_name": "com.storyPost.PhotoVideoDownloader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751156611289-qbp13to8hah8907hmotu6l2lp4hkrok8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.storyPost.PhotoVideoDownloader",
+            "certificate_hash": "d9f151039cac179d3f1d6e17f54a5d7b9eacd5da"
+          }
+        },
+        {
+          "client_id": "751156611289-5uqnfm8p57kv8scggk027rdfftl7a8pt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs1AmA5F6vJ1Ox-ImAKyd0hsFlmC8j458"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751156611289-5uqnfm8p57kv8scggk027rdfftl7a8pt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-7814549536543810~8375934539"
+    }
+  ],
+  "configuration_version": "1"
+}

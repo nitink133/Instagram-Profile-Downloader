@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@android:color/transparent</color>
+    <color name="colorPrimaryDark">#F0F0F0</color>
+    <color name="colorAccent">#000</color>
+
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="lightgray">#D5D5D5</color>
+
+    <color name="grey">#EEEEEE</color>
+
+    <color name="black_transparent">#97000000</color>
+    <color name="white_transparent">#85F8F6F6</color>
+    <color name="insta_background">#e1306c</color>
+    <color name="starColor">#F2B01E</color>
+    <color name="textHintColor">#8cffffff</color>
+    <color name="commentBoxBackground">#E4EDF2</color>
+    <color name="notDescriptionTextColor">#A7A7AF</color>
+
+
+</resources>

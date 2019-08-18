@@ -1,0 +1,125 @@
+<resources>
+    <string name="app_name">InstaSaver</string>
+    <string name="insta_client_id">	35a16c292a454dc598c24fe3c7e1be60</string>
+    <string name="insta_client_secret">3424a76b2451494ab44f9e3304f7cb16</string>
+
+    <string name="redirect_url">https://instagram.com/</string>
+    <string name="base_url">https://api.instagram.com/</string>
+    <string name="get_user_info_url">https://api.instagram.com/v1/users/self/?access_token=</string>
+
+
+    <string name="username_cant_empty">Username field can\'t be empty.</string>
+    <string name="password_cant_empty">Password field can\'t be empty.</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="blank_iv">Search Instagtam username to display profile picture</string>
+    <string name="no_profs">No profile pics saved yet</string>
+    <string name="error_loading_instagram_log_in_page">Error loading Instagram Log in page</string>
+    <string name="no_ig_ers_favorited_yet">No Favorite stories yet</string>
+    <string name="user_icon">user_icon</string>
+    <string name="log_out">Log out</string>
+    <string name="logout">Log out</string>
+    <string name="sign_out_warning">Are you sure you want to Log out?</string>
+    <string name="no_saved_stories_found">No saved stories found</string>
+    <string name="tap_on_save_on_images_videos_to_save_them">Tap on save on Images/Videos to save them</string>
+    <string name="error_loading_instagram_stories">Error loading Instagram stories</string>
+    <string name="please_check_internet_connection_then_tap_refresh">Please check internet connection then tap refresh</string>
+    <string name="error_loading_favorite_instagram_stories">Error loading favorite Instagram stories</string>
+    <string name="tap_on_user_icon_in_stories_feed_to_set_favorites">Tap on user icon in stories feed to set favorites</string>
+    <string name="refresh">Please check internet connection then refresh</string>
+    <string name="no_fave_stories">No fave Instagram stories found</string>
+    <string name="search_users">search users</string>
+    <string name="no_search_history_found">No search history found</string>
+    <string name="clear_history">Clear history</string>
+    <string name="no_stories">No stories found</string>
+    <string name="default_notification_channel_id">default_notif_channel</string>
+    <string name="tap_on_search_icon_to_search_users">Tap on search icon to search users</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- TODO - add your ad unit Ids -->
+    <!-- AdMob ad unit IDs -->
+
+
+    <!-- TODO - add your ad unit Ids -->
+    <!-- AdMob Live IDs -->
+    <string name="admob_app_id">ca-app-pub-7814549536543810~8375934539</string>
+    <string name="banner_home_footer">ca-app-pub-7814549536543810/3123607855</string>
+    <string name="interstitial_full_screen">ca-app-pub-7814549536543810/9305872827</string>
+    <string name="rewarded_video">ca-app-pub-7814549536543810/8297487416</string>
+
+
+    <!-- Facebook Live id -->
+    <string name="facebook_app_id">ca-app-pub-7814549536543810~2265774028</string>
+    <string name="facebook_banner">720819818334614_720821941667735</string>
+    <string name="facebook_rectangle">720819818334614_727176271032302</string>
+    <string name="facebook_interstitial">720819818334614_720828088333787</string>
+
+
+    <!--Facebook Test Ads id &ndash;&gt;-->
+    <!--<string name="facebook_app_id">YOUR_PLACEMENT_ID</string>-->
+    <!--<string name="facebook_banner">YOUR_PLACEMENT_ID</string>-->
+    <!--<string name="facebook_rectangle">YOUR_PLACEMENT_ID</string>-->
+    <!--<string name="facebook_interstitial">YOUR_PLACEMENT_ID</string>-->
+
+
+    <!-- AdMob Test Ads id -->
+    <!--<string name="banner_home_footer" translatable="false">ca-app-pub-3940256099942544/6300978111</string>-->
+    <!--<string name="interstitial_full_screen" translatable="false">ca-app-pub-3940256099942544/1033173712</string>-->
+    <!--<string name="rewarded_video" translatable="false">ca-app-pub-3940256099942544/5224354917</string>-->
+    <!--<string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>-->
+
+    <string name="msg_rationale">Please provide permission so that you can …</string>
+    <string name="txt_info">Info</string>
+    <string name="txt_warning">Warning</string>
+
+
+    <string name="download_profile_photo">1. Open the InstaSaver App.\n\n
+2. Go to Navigation bar. click on \"Download Profile Pic\"\n\n
+3. Enter username of the person you want to download profile photo of.\n\n
+4. Click on "Get" button.\n\n
+5. After that bottom right corner you will find 3 icons(Share, Download, Repost).\n\n
+6. Click on Download button to save the profile picture.\n\n
+7.Click on Repost button to repost on Instagram.\n\n
+8.Click on Share button to share on all the available platform.\n\n</string>
+
+
+    <string name="download_stories">1. Open InstaSaver App.\n\n
+2. Screen will open  conatining stories of people you follow or  you can also search any instagram user.\n\n
+3. After clicking on story. you will find all stories of that person.\n\n
+4. You can download, Repost and Share as well Bookmark your favorite stories.\n\n</string>
+
+
+    <string name="download_post">1. Open the Instagram app.\n\n
+2. Click three dots icon on the top right corner of the person\'s post. Once open click on \"Copy \" option.\n\n
+3. Now open InstaSaver App.\n\n
+Go to navigation bar. Click on \"Download Post\".\n\n
+4. Paste the copied URL in the past URL dialogue box.\n\n
+5. Click on \"Download\" button to save the post.\n\n</string>
+
+    <string name="download_igtv">1. Open the Instagram app.\n\n
+2. Go to IGTV Videos and open any video you want to download.\n\n
+3. Click on three dots icon in the bottom of Video. Once open click on "Copy link" option.\n\n
+4. Now open InstaSaver App.\n\n
+5. Go to navigation bar. Click on "Download IGTV Videos".\n\n
+6. Paste the copied URL in the past URL dialogue box..\n\n
+7. Click on "Download" button to save the post..\n\n
+    </string>
+    <string name="lbl_how_to_use">How to use</string>
+
+    <string name="lbl_download_profile_image">Download Profile Pic</string>
+    <string name="lbl_download_history">Download History</string>
+    <string name="how_to_download_igtv_videos_on_instasaver">How to Download IGTV Videos on InstaSaver ?</string>
+    <string name="native_ad_id">ca-app-pub-7814549536543810/1483408843</string>
+
+
+
+</resources>
+
