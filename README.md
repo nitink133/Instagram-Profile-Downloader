@@ -1,29 +1,3 @@
 ## Instagram Profile Downloader 
 
-Instagram Profile Downloader is an opensource Android application for downloading Instagram profile image,stories, post etc
-
-## Show your love
-
-1. Star this repo
-2. Buy me a coffee 
-   [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H2HPSR)
-
-#### Features :-
-
-- Profile Image downloader
-
-- Stories Downlaoder
-
-- Favourite/ Unfavourite
-
-- Multiple Accounts Login
-
-- Search for stories
-
-- Download Post
-
-- Download History
-
-- View Profile Feature
-
-- Download IGTV videos
+Instagram Downloader is a tool that allows users to download data from Instagram. The app is open-source and supports multiple logins, making it possible for users to download profile images, stories, posts, and IGTV videos. It also includes features such as the ability to search for stories and mark them as favorites, as well as view profiles and download activity history. However, the project is no longer being updated and may not be available in the future.
